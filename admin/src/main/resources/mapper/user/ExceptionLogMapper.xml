@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.book.admin.module.user.dao.ExceptionLogMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.module.user.entity.ExceptionLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="method_name" jdbcType="VARCHAR" property="methodName" />
+    <result column="exception_type" jdbcType="VARCHAR" property="exceptionType" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="create_userid" jdbcType="INTEGER" property="createUserid" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="view" jdbcType="TINYINT" property="view" />
+    <result column="view_time" jdbcType="TIMESTAMP" property="viewTime" />
+    <result column="view_userid" jdbcType="INTEGER" property="viewUserid" />
+    <result column="resolve" jdbcType="BIT" property="resolve" />
+    <result column="resolve_time" jdbcType="TIMESTAMP" property="resolveTime" />
+    <result column="resolve_userid" jdbcType="INTEGER" property="resolveUserid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jay.book.admin.module.user.entity.ExceptionLog">
+    <result column="exception_msg" jdbcType="LONGVARCHAR" property="exceptionMsg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, class_name, method_name, exception_type, ip, create_userid, addtime, view, view_time, 
+    view_userid, resolve, resolve_time, resolve_userid
+  </sql>
+  <sql id="Blob_Column_List">
+    exception_msg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from exception_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from exception_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.jay.book.admin.module.user.entity.ExceptionLog">
+    insert into exception_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="className != null">
+        class_name,
+      </if>
+      <if test="methodName != null">
+        method_name,
+      </if>
+      <if test="exceptionType != null">
+        exception_type,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="createUserid != null">
+        create_userid,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="view != null">
+        view,
+      </if>
+      <if test="viewTime != null">
+        view_time,
+      </if>
+      <if test="viewUserid != null">
+        view_userid,
+      </if>
+      <if test="resolve != null">
+        resolve,
+      </if>
+      <if test="resolveTime != null">
+        resolve_time,
+      </if>
+      <if test="resolveUserid != null">
+        resolve_userid,
+      </if>
+      <if test="exceptionMsg != null">
+        exception_msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionType != null">
+        #{exceptionType,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null">
+        #{createUserid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="view != null">
+        #{view,jdbcType=TINYINT},
+      </if>
+      <if test="viewTime != null">
+        #{viewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewUserid != null">
+        #{viewUserid,jdbcType=INTEGER},
+      </if>
+      <if test="resolve != null">
+        #{resolve,jdbcType=BIT},
+      </if>
+      <if test="resolveTime != null">
+        #{resolveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resolveUserid != null">
+        #{resolveUserid,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionMsg != null">
+        #{exceptionMsg,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.module.user.entity.ExceptionLog">
+    update exception_log
+    <set>
+      <if test="className != null">
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        method_name = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionType != null">
+        exception_type = #{exceptionType,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null">
+        create_userid = #{createUserid,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="view != null">
+        view = #{view,jdbcType=TINYINT},
+      </if>
+      <if test="viewTime != null">
+        view_time = #{viewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewUserid != null">
+        view_userid = #{viewUserid,jdbcType=INTEGER},
+      </if>
+      <if test="resolve != null">
+        resolve = #{resolve,jdbcType=BIT},
+      </if>
+      <if test="resolveTime != null">
+        resolve_time = #{resolveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resolveUserid != null">
+        resolve_userid = #{resolveUserid,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionMsg != null">
+        exception_msg = #{exceptionMsg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

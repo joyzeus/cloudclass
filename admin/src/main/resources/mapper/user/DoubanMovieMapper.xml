@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.book.admin.module.user.dao.DoubanMovieMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.module.user.entity.DoubanMovie">
+    <id column="movie_id" jdbcType="INTEGER" property="movieId" />
+    <result column="director" jdbcType="VARCHAR" property="director" />
+    <result column="scenarist" jdbcType="VARCHAR" property="scenarist" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="release_date" jdbcType="DATE" property="releaseDate" />
+    <result column="duration" jdbcType="VARCHAR" property="duration" />
+    <result column="rating_num" jdbcType="VARCHAR" property="ratingNum" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jay.book.admin.module.user.entity.DoubanMovie">
+    <result column="name" jdbcType="LONGVARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    movie_id, director, scenarist, actors, type, country, language, release_date, duration, 
+    rating_num, tags
+  </sql>
+  <sql id="Blob_Column_List">
+    name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from douban_movie
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from douban_movie
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.jay.book.admin.module.user.entity.DoubanMovie">
+    insert into douban_movie
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="movieId != null">
+        movie_id,
+      </if>
+      <if test="director != null">
+        director,
+      </if>
+      <if test="scenarist != null">
+        scenarist,
+      </if>
+      <if test="actors != null">
+        actors,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="releaseDate != null">
+        release_date,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="ratingNum != null">
+        rating_num,
+      </if>
+      <if test="tags != null">
+        tags,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="movieId != null">
+        #{movieId,jdbcType=INTEGER},
+      </if>
+      <if test="director != null">
+        #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="scenarist != null">
+        #{scenarist,jdbcType=VARCHAR},
+      </if>
+      <if test="actors != null">
+        #{actors,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null">
+        #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="ratingNum != null">
+        #{ratingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.module.user.entity.DoubanMovie">
+    update douban_movie
+    <set>
+      <if test="director != null">
+        director = #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="scenarist != null">
+        scenarist = #{scenarist,jdbcType=VARCHAR},
+      </if>
+      <if test="actors != null">
+        actors = #{actors,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null">
+        release_date = #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="ratingNum != null">
+        rating_num = #{ratingNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null">
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </update>
+  <sql id="base_query">
+    <trim prefix="WHERE" prefixOverrides="AND | OR">
+      <if test="null != movieId">
+         and t.movie_id = #{movieId,jdbcType=INTEGER}
+      </if>
+      <if test="null != director">
+         and t.director = #{director,jdbcType=VARCHAR}
+      </if>
+      <if test="null != scenarist">
+         and t.scenarist = #{scenarist,jdbcType=VARCHAR}
+      </if>
+      <if test="null != actors">
+         and t.actors = #{actors,jdbcType=VARCHAR}
+      </if>
+      <if test="null != type">
+         and t.type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="null != country">
+         and t.country = #{country,jdbcType=VARCHAR}
+      </if>
+      <if test="null != language">
+         and t.language = #{language,jdbcType=VARCHAR}
+      </if>
+      <if test="null != releaseDate">
+         and t.release_date = #{releaseDate,jdbcType=DATE}
+      </if>
+      <if test="null != duration">
+         and t.duration = #{duration,jdbcType=VARCHAR}
+      </if>
+      <if test="null != ratingNum">
+         and t.rating_num = #{ratingNum,jdbcType=VARCHAR}
+      </if>
+      <if test="null != tags">
+         and t.tags = #{tags,jdbcType=VARCHAR}
+      </if>
+      <if test="null != name">
+         and t.name = #{name,jdbcType=LONGVARCHAR}
+      </if>
+    </trim>
+  </sql>
+  <select id="find" parameterType="com.jay.book.admin.module.user.entity.DoubanMovie" resultMap="BaseResultMap">
+    select t.* from douban_movie t
+    <include refid="base_query" />
+  </select>
+  <select id="list" parameterType="com.jay.book.admin.module.user.entity.DoubanMovie" resultMap="BaseResultMap">
+    select t.* from douban_movie t
+    <include refid="base_query" />
+  </select>
+  <select id="pageList" parameterType="com.jay.book.admin.module.user.entity.DoubanMovie" resultMap="BaseResultMap">
+    select t.* from douban_movie t
+    <include refid="base_query" />
+  </select>
+</mapper>
