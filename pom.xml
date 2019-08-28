@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>manager</module>
+        <module>admin</module>
         <module>spider</module>
         <module>mybatisgenerator</module>
     </modules>
