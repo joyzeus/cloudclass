@@ -1,7 +1,7 @@
 package com.jay.book.spider;
 
-import com.jay.book.admin.module.book.entity.DoubanBook;
-import com.jay.book.admin.module.book.entity.DoubanBookType;
+import com.jay.book.module.book.entity.DoubanBook;
+import com.jay.book.module.book.entity.DoubanBookType;
 import com.jay.book.service.base.DoubanBookService;
 import com.jay.book.admin.util.DateUtil;
 import org.apache.commons.lang3.StringUtils;

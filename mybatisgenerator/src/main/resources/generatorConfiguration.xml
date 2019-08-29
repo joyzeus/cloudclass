@@ -31,21 +31,21 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.jay.book.admin.module.book.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.jay.book.module.admin.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mapper/book" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper/admin" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jay.book.admin.module.book.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jay.book.module.admin.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="douban_book" domainObjectName="DoubanBook"
+        <table tableName="permission" domainObjectName="Permission"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

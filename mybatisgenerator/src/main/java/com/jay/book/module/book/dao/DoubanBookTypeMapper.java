@@ -1,7 +1,7 @@
-package com.jay.book.admin.module.book.dao;
+package com.jay.book.module.book.dao;
 
 import com.github.pagehelper.Page;
-import com.jay.book.admin.module.book.entity.DoubanBookType;
+import com.jay.book.module.book.entity.DoubanBookType;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
