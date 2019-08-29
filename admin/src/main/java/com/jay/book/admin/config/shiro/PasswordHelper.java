@@ -1,6 +1,6 @@
 package com.jay.book.admin.config.shiro;
 
-import com.jay.book.admin.module.user.entity.po.Users;
+import com.jay.book.admin.entity.model.Users;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.springframework.stereotype.Component;

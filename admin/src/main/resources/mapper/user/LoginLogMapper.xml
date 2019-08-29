@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.admin.module.user.dao.LoginLogMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.admin.module.user.entity.LoginLog">
+<mapper namespace="com.jay.book.admin.dao.LoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.model.LoginLog">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="location" jdbcType="VARCHAR" property="location" />
     <result column="client_type" jdbcType="VARCHAR" property="clientType" />
     <result column="client_agent" jdbcType="VARCHAR" property="clientAgent" />
     <result column="karnel_version" jdbcType="VARCHAR" property="karnelVersion" />
     <result column="useragent" jdbcType="VARCHAR" property="useragent" />
+    <result column="spend_time" jdbcType="BIGINT" property="spendTime" />
     <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    table_id, user_id, create_time, ip, location, client_type, client_agent, karnel_version, 
-    useragent, message
+    table_id, user_id, ip, location, client_type, client_agent, karnel_version,
+    useragent, spend_time,message, create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -27,7 +28,7 @@
     delete from login_log
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insertSelective" parameterType="com.jay.book.admin.module.user.entity.LoginLog">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.model.LoginLog">
     insert into login_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -59,6 +60,9 @@
       </if>
       <if test="message != null">
         message,
+      </if>
+      <if test="spendTime != null">
+        spend_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -92,9 +96,12 @@
       <if test="message != null">
         #{message,jdbcType=VARCHAR},
       </if>
+      <if test="spendTime != null">
+        #{spendTime},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.module.user.entity.LoginLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.model.LoginLog">
     update login_log
     <set>
       <if test="userId != null">
@@ -123,6 +130,9 @@
       </if>
       <if test="message != null">
         message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="spendTime != null">
+        spend_time = #{spendTime},
       </if>
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}

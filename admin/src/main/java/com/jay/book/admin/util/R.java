@@ -1,11 +1,17 @@
 package com.jay.book.admin.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.HashMap;
 
 public class R extends HashMap<String, Object> {
 
     public static R ok() {
         return new R().setCode(HttpCode.OK.getCode()).setMessage(HttpCode.OK.getDesc());
+    }
+
+    public static R success(Object object) {
+        return R.ok().put("data", object);
     }
 
     public static R error() {
@@ -31,5 +37,10 @@ public class R extends HashMap<String, Object> {
     public R put(String key, Object value) {
         super.put(key, value);
         return this;
+    }
+
+    public boolean isSuccess() {
+        Object code = get("code");
+        return code != null && StringUtils.equals("0", code.toString());
     }
 }

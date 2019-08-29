@@ -1,10 +1,10 @@
 package com.jay.book.admin.interceptor;
 
-import com.jay.book.admin.module.user.entity.EmailConfig;
-import com.jay.book.admin.module.user.entity.ExceptionLog;
-import com.jay.book.admin.module.user.service.base.EmailConfigService;
-import com.jay.book.admin.module.user.service.base.ExceptionLogService;
-import com.jay.book.admin.module.user.service.base.MailService;
+import com.jay.book.admin.entity.model.EmailConfig;
+import com.jay.book.admin.entity.model.ExceptionLog;
+import com.jay.book.admin.service.base.EmailConfigService;
+import com.jay.book.admin.service.base.ExceptionLogService;
+import com.jay.book.admin.service.base.MailService;
 import com.jay.book.admin.util.IPUtil;
 import com.jay.book.admin.util.JacksonUtil;
 import com.jay.book.admin.util.R;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.admin.module.user.dao.EmailConfigMapper">
-    <resultMap id="BaseResultMap" type="com.jay.book.admin.module.user.entity.EmailConfig">
+<mapper namespace="com.jay.book.admin.dao.EmailConfigMapper">
+    <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.model.EmailConfig">
         <id column="table_id" jdbcType="INTEGER" property="tableId"/>
         <result column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="account" jdbcType="VARCHAR" property="account"/>
@@ -28,7 +28,7 @@
         from email_config
         where table_id = #{tableId,jdbcType=INTEGER}
     </delete>
-    <insert id="insertSelective" parameterType="com.jay.book.admin.module.user.entity.EmailConfig">
+    <insert id="insertSelective" parameterType="com.jay.book.admin.entity.model.EmailConfig">
         insert into email_config
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="tableId != null">
@@ -95,7 +95,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.module.user.entity.EmailConfig">
+    <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.model.EmailConfig">
         update email_config
         <set>
             <if test="userId != null">
@@ -128,7 +128,7 @@
         </set>
         where table_id = #{tableId,jdbcType=INTEGER}
     </update>
-    <select id="get" resultType="com.jay.book.admin.module.user.entity.EmailConfig">
+    <select id="get" resultType="com.jay.book.admin.entity.model.EmailConfig">
         select
         <include refid="Base_Column_List"/>
         from

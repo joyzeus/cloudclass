@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.admin.module.user.dao.CSDNBlogMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.admin.module.user.entity.CSDNBlog">
+<mapper namespace="com.jay.book.admin.dao.CSDNBlogMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.CSDNBlog">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="article_id" jdbcType="INTEGER" property="articleId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -26,7 +26,7 @@
     delete from csdnblog
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insertSelective" parameterType="com.jay.book.admin.module.user.entity.CSDNBlog">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.CSDNBlog">
     insert into csdnblog
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -93,7 +93,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.module.user.entity.CSDNBlog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.CSDNBlog">
     update csdnblog
     <set>
       <if test="articleId != null">

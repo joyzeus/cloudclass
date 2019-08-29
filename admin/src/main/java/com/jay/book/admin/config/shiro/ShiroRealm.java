@@ -1,9 +1,9 @@
 package com.jay.book.admin.config.shiro;
 
 import com.jay.book.admin.constant.RedisKeyEnum;
-import com.jay.book.admin.module.user.entity.po.Users;
+import com.jay.book.admin.entity.model.Users;
 import com.jay.book.admin.config.redis.RedisUtil;
-import com.jay.book.admin.module.user.service.base.UserService;
+import com.jay.book.admin.service.base.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
