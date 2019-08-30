@@ -58,6 +58,6 @@ mybatis:
     call-setters-on-nulls: true
 
 logging:
-  config: src/main/resources/logback-spring.xml
+  config: admin/src/main/resources/logback-spring.xml
   level:
     com.zhongye.manager.module.*.dao: debug

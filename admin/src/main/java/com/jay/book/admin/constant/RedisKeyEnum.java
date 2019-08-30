@@ -6,7 +6,8 @@ public enum RedisKeyEnum {
     TOKEN("sys:user:token:", "通过userid查询token"),
     USERID("sys:user:userid:", "通过token查询userid"),
     SEND_EMAIL_LIST("sys:config:email:send", "发送邮件的账号"),
-    RECEIVE_EMAIL_LIST("sys:config:email:receive", "接受邮件的账号");
+    RECEIVE_EMAIL_LIST("sys:config:email:receive", "接受邮件的账号"),
+    PERMISSION_TREE("sys:config:permission:tree", "权限树");
 
     String key;
     String desc;

@@ -66,7 +66,7 @@ public class RedisUtil {
         return JacksonUtil.parseToObject(get(key), clazz);
     }
 
-    public <T> List<T> getArray(String key, Class<T> clazz) {
+    public <T> List<T> getList(String key, Class<T> clazz) {
         return JacksonUtil.parseToArray(get(key), clazz);
     }
 

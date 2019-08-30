@@ -119,3 +119,51 @@ CREATE TABLE `douban_book_type` (
                                     `count` int(11) NOT NULL DEFAULT '0',
                                     PRIMARY KEY (`table_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+CREATE TABLE `permission` (
+  `table_id` int(11) NOT NULL AUTO_INCREMENT,
+  `node_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `has_child` tinyint(4) NOT NULL DEFAULT '0',
+  `type` int(11) NOT NULL DEFAULT '0',
+  `order_id` int(11) NOT NULL DEFAULT '0',
+  `actived` tinyint(4) NOT NULL,
+  `deleted` tinyint(4) NOT NULL,
+  PRIMARY KEY (`table_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+CREATE TABLE `permission_group` (
+  `table_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '权限名称',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '权限描述',
+  `group_type` int(11) NOT NULL COMMENT '权限组类型',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '创建人',
+  PRIMARY KEY (`table_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='权限组/角色';
+
+
+
+CREATE TABLE `permission_group_relation` (
+  `table_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL DEFAULT '0',
+  `group_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `permission_id` int(11) NOT NULL DEFAULT '0',
+  `permission_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`table_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE `user_permission` (
+  `table_id` int(11) NOT NULL AUTO_INCREMENT,
+  `relation_id` int(11) NOT NULL DEFAULT '0' COMMENT '权限Id',
+  `type` int(11) NOT NULL DEFAULT '0' COMMENT '权限类型',
+  `user_id` int(11) NOT NULL COMMENT '用户Id',
+  `expired_time` datetime NOT NULL DEFAULT '1900-01-01 00:00:00' COMMENT '权限有效期',
+  PRIMARY KEY (`table_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户权限表';
