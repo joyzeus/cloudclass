@@ -13,7 +13,7 @@
         <module>common</module>
         <module>admin</module>
         <module>spider</module>
-        <module>mybatisgenerator</module>
+        <module>mbg</module>
     </modules>
 
     <parent>
@@ -72,6 +72,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
         </dependency>
     </dependencies>
 </project>

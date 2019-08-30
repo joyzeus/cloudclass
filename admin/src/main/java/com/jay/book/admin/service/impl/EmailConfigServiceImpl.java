@@ -79,7 +79,7 @@ public class EmailConfigServiceImpl implements EmailConfigService {
     public List<EmailConfig> selectReceiveEmailAccountWithRedisCache() {
         String key = RedisKeyEnum.RECEIVE_EMAIL_LIST.getKey();
         if (redisUtil.has(key)) {
-            return redisUtil.getArray(key, EmailConfig.class);
+            return redisUtil.getList(key, EmailConfig.class);
         } else {
             List<EmailConfig> emailConfigList = emailConfigMapper.get(EmailConfig.Builder.anEmailConfig()
                     .emailType(2)

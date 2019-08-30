@@ -36,7 +36,7 @@
         </dependency>
         <dependency>
             <groupId>com.jay.book</groupId>
-            <artifactId>mybatisgenerator</artifactId>
+            <artifactId>mbg</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

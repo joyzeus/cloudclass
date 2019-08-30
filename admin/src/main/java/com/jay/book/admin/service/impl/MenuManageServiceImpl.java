@@ -2,8 +2,6 @@ package com.jay.book.admin.service.impl;
 
 import com.jay.book.admin.config.redis.RedisUtil;
 import com.jay.book.admin.constant.RedisKeyEnum;
-import com.jay.book.admin.dao.PermissionMapper;
-import com.jay.book.admin.entity.Permission;
 import com.jay.book.admin.entity.vo.PermissionVO;
 import com.jay.book.admin.service.base.MenuManageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +26,12 @@ public class MenuManageServiceImpl implements MenuManageService {
     }
 
     public List<PermissionVO> getMenuTree(){
-        List<Permission> data = new ArrayList<>();
+        List<PermissionVO> data = new ArrayList<>();
         String key = RedisKeyEnum.PERMISSION_TREE.getKey();
         if (redisUtil.has(key)){
             return redisUtil.getList(key, PermissionVO.class);
         }else {
-            permissionMapper.sele
+//            permissionMapper.sele
         }
 
         return data;

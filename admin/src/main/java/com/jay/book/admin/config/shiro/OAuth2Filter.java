@@ -4,7 +4,6 @@ import com.jay.book.admin.util.HttpContextUtils;
 import com.jay.book.admin.util.JacksonUtil;
 import com.jay.book.admin.util.R;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpStatus;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
@@ -55,7 +54,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
 
-            String json = JacksonUtil.toJson(R.error(HttpStatus.SC_UNAUTHORIZED, "invalid token"));
+            String json = JacksonUtil.toJson(R.error(401, "invalid token"));
 
             httpResponse.getWriter().print(json);
 
@@ -74,7 +73,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
         try {
             //处理登录失败的异常
             Throwable throwable = e.getCause() == null ? e : e.getCause();
-            R r = R.error(HttpStatus.SC_UNAUTHORIZED, throwable.getMessage());
+            R r = R.error(401, throwable.getMessage());
             String json = JacksonUtil.toJson(r);
             httpResponse.getWriter().print(json);
         } catch (IOException e1) {

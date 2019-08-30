@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.book.module.admin.dao.UserPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.UserPermission">
+    <id column="table_id" jdbcType="INTEGER" property="tableId" />
+    <result column="relation_id" jdbcType="INTEGER" property="relationId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="expired_time" jdbcType="TIMESTAMP" property="expiredTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    table_id, relation_id, type, user_id, expired_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_permission
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_permission
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jay.book.module.admin.entity.UserPermission">
+    insert into user_permission (table_id, relation_id, type, 
+      user_id, expired_time)
+    values (#{tableId,jdbcType=INTEGER}, #{relationId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{expiredTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.UserPermission">
+    insert into user_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        table_id,
+      </if>
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="expiredTime != null">
+        expired_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="relationId != null">
+        #{relationId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="expiredTime != null">
+        #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.UserPermission">
+    update user_permission
+    <set>
+      <if test="relationId != null">
+        relation_id = #{relationId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="expiredTime != null">
+        expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.UserPermission">
+    update user_permission
+    set relation_id = #{relationId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      expired_time = #{expiredTime,jdbcType=TIMESTAMP}
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+  <sql id="base_query">
+    <trim prefix="WHERE" prefixOverrides="AND | OR">
+      <if test="null != tableId">
+         and t.table_id = #{tableId,jdbcType=INTEGER}
+      </if>
+      <if test="null != relationId">
+         and t.relation_id = #{relationId,jdbcType=INTEGER}
+      </if>
+      <if test="null != type">
+         and t.type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="null != userId">
+         and t.user_id = #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="null != expiredTime">
+         and t.expired_time = #{expiredTime,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </sql>
+  <select id="find" parameterType="com.jay.book.module.admin.entity.UserPermission" resultMap="BaseResultMap">
+    select t.* from user_permission t
+    <include refid="base_query" />
+  </select>
+  <select id="list" parameterType="com.jay.book.module.admin.entity.UserPermission" resultMap="BaseResultMap">
+    select t.* from user_permission t
+    <include refid="base_query" />
+  </select>
+  <select id="pageList" parameterType="com.jay.book.module.admin.entity.UserPermission" resultMap="BaseResultMap">
+    select t.* from user_permission t
+    <include refid="base_query" />
+  </select>
+</mapper>
