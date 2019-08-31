@@ -28,19 +28,19 @@ import java.util.Map;
 public class WebLogAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
 
-    @Pointcut("execution(public * com.jay.book.*.controller.*.*(..))")
+//    @Pointcut("execution(public * com.jay.book.*.controller.*.*(..))")
     public void webLog() {
     }
 
-    @Before("webLog()")
+//    @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
     }
 
-    @AfterReturning(value = "webLog()", returning = "ret")
+//    @AfterReturning(value = "webLog()", returning = "ret")
     public void doAfterReturning(Object ret) throws Throwable {
     }
 
-    @Around("webLog()")
+//    @Around("webLog()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
 //        long startTime = System.currentTimeMillis();
 //        //获取当前请求对象

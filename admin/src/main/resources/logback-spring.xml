@@ -30,12 +30,12 @@
         </rollingPolicy>
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </root>
 
-    <logger name="com.zhongye.manager" level="trace" additivity="false">
+    <logger name="com.jay.book" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>

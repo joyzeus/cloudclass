@@ -31,7 +31,7 @@ spring:
     filters: stat, wall
 
   redis:
-    host: 127.0.0.1
+    host: 192.168.1.166
     port: 6379
     password:    # 密码（默认为空）
     timeout: 6000ms  # 连接超时时长（毫秒）
@@ -63,3 +63,10 @@ logging:
   config: admin/src/main/resources/logback-spring.xml
   level:
     com.zhongye.manager.module.*.dao: debug
+
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: token  #JWT负载中拿到开头
