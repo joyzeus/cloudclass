@@ -4,37 +4,26 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Users implements Serializable {
-    @ApiModelProperty(value = "唯一主键Id")
     private Integer tableId;
 
-    @ApiModelProperty(value = "账户名称")
     private String account;
 
-    @ApiModelProperty(value = "密码")
     private String password;
 
-    @ApiModelProperty(value = "用户名")
     private String username;
 
-    @ApiModelProperty(value = "手机号")
     private String mobile;
 
-    @ApiModelProperty(value = "邮箱")
     private String email;
 
-    @ApiModelProperty(value = "性别")
     private Integer sex;
 
-    @ApiModelProperty(value = "头像")
     private String icon;
 
-    @ApiModelProperty(value = "用户Id")
     private Integer userId;
 
-    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
     private static final long serialVersionUID = 1L;

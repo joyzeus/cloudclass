@@ -4,43 +4,30 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class LoginLog implements Serializable {
-    @ApiModelProperty(value = "唯一主键Id")
     private Integer tableId;
 
-    @ApiModelProperty(value = "用户Id")
     private Integer userId;
 
-    @ApiModelProperty(value = "登录使用的账号")
     private String account;
 
-    @ApiModelProperty(value = "是否登录成功")
     private Byte loginSuccess;
 
-    @ApiModelProperty(value = "登录IP")
     private String ip;
 
-    @ApiModelProperty(value = "登录地址")
     private String location;
 
-    @ApiModelProperty(value = "设备类型")
     private String deviceType;
 
-    @ApiModelProperty(value = "代理")
     private String agentType;
 
-    @ApiModelProperty(value = "内核版本")
     private String karnelVersion;
 
-    @ApiModelProperty(value = "代理详细信息")
     private String useragent;
 
-    @ApiModelProperty(value = "登录花费的时间")
     private Long spendTime;
 
-    @ApiModelProperty(value = "登录的日志")
     private String message;
 
-    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

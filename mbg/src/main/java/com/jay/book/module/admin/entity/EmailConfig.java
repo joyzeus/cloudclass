@@ -4,31 +4,23 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class EmailConfig implements Serializable {
-    @ApiModelProperty(value = "唯一主键Id")
+
     private Integer tableId;
 
-    @ApiModelProperty(value = "用户Id")
     private Integer userId;
 
-    @ApiModelProperty(value = "账户")
     private String account;
 
-    @ApiModelProperty(value = "账户类型")
     private String accountType;
 
-    @ApiModelProperty(value = "邮件类型")
     private Integer emailType;
 
-    @ApiModelProperty(value = "是否启用")
     private Boolean enable;
 
-    @ApiModelProperty(value = "创建时间")
     private Date creatTime;
 
-    @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
-    @ApiModelProperty(value = "更新人")
     private Integer updateUserId;
 
     private static final long serialVersionUID = 1L;

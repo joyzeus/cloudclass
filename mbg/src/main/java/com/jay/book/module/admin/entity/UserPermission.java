@@ -6,16 +6,12 @@ import java.util.Date;
 public class UserPermission implements Serializable {
     private Integer tableId;
 
-    @ApiModelProperty(value = "权限Id")
     private Integer relationId;
 
-    @ApiModelProperty(value = "权限类型")
     private Integer type;
 
-    @ApiModelProperty(value = "用户Id")
     private Integer userId;
 
-    @ApiModelProperty(value = "权限有效期")
     private Date expiredTime;
 
     private static final long serialVersionUID = 1L;

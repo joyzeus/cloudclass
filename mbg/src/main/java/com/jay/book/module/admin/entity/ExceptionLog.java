@@ -4,46 +4,32 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ExceptionLog implements Serializable {
-    @ApiModelProperty(value = "主键id")
     private Integer id;
 
-    @ApiModelProperty(value = "类名")
     private String className;
 
-    @ApiModelProperty(value = "方法名")
     private String methodName;
 
-    @ApiModelProperty(value = "异常类型")
     private String exceptionType;
 
-    @ApiModelProperty(value = "远程访问主机IP")
     private String ip;
 
-    @ApiModelProperty(value = "产生人id")
     private Integer createUserid;
 
-    @ApiModelProperty(value = "异常发生时间")
     private Date addtime;
 
-    @ApiModelProperty(value = "是否查看，1：未查看、2：已查看")
     private Byte view;
 
-    @ApiModelProperty(value = "查看时间")
     private Date viewTime;
 
-    @ApiModelProperty(value = "查看人id")
     private Integer viewUserid;
 
-    @ApiModelProperty(value = "是否解决")
     private Boolean resolve;
 
-    @ApiModelProperty(value = "解决时间")
     private Date resolveTime;
 
-    @ApiModelProperty(value = "解决人id")
     private Integer resolveUserid;
 
-    @ApiModelProperty(value = "异常信息")
     private String exceptionMsg;
 
     private static final long serialVersionUID = 1L;

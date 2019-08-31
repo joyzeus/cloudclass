@@ -6,19 +6,14 @@ import java.util.Date;
 public class PermissionGroup implements Serializable {
     private Integer tableId;
 
-    @ApiModelProperty(value = "权限名称")
     private String groupName;
 
-    @ApiModelProperty(value = "权限描述")
     private String description;
 
-    @ApiModelProperty(value = "权限组类型")
     private Integer groupType;
 
-    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    @ApiModelProperty(value = "创建人")
     private Integer createUserId;
 
     private static final long serialVersionUID = 1L;

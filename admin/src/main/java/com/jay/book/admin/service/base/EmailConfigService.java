@@ -1,6 +1,6 @@
 package com.jay.book.admin.service.base;
 
-import com.jay.book.admin.entity.model.EmailConfig;
+import com.jay.book.module.admin.entity.EmailConfig;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.jay.book.admin.service.base;
 
-import com.jay.book.admin.entity.model.ExceptionLog;
+import com.jay.book.module.admin.entity.ExceptionLog;
 
 import java.util.List;
 
