@@ -1,4 +1,4 @@
-package com.jay.book.module.book.entity;
+package com.jay.book.book.entity;
 
 import lombok.Data;
 

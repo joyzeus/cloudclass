@@ -1,19 +1,19 @@
 package com.jay.book.admin.controller;
 
-import com.jay.book.admin.entity.model.LoginLog;
-import com.jay.book.admin.entity.model.Users;
 import com.jay.book.admin.config.shiro.PasswordHelper;
 import com.jay.book.admin.entity.bo.UserLoginBO;
 import com.jay.book.admin.entity.vo.UsersVo;
 import com.jay.book.admin.service.base.SysLogService;
-import com.jay.book.admin.service.base.UserService;
 import com.jay.book.admin.service.base.UserTokenService;
+import com.jay.book.admin.service.base.UsersService;
 import com.jay.book.admin.service.base.VerificationCodeService;
 import com.jay.book.admin.util.IPUtil;
 import com.jay.book.admin.util.MD5Util;
 import com.jay.book.admin.util.R;
 import com.jay.book.admin.util.UserAgentUtils;
 import com.jay.book.common.api.ResultCode;
+import com.jay.book.admin.entity.LoginLog;
+import com.jay.book.admin.entity.Users;
 import eu.bitwalker.useragentutils.UserAgent;
 import eu.bitwalker.useragentutils.Version;
 import org.apache.commons.lang3.StringUtils;
@@ -33,7 +33,7 @@ import java.util.Date;
 @RequestMapping("/user")
 public class LoginController extends BaseContorller {
 
-    private final UserService userService;
+    private final UsersService userService;
 
     private final UserTokenService userTokenService;
 
@@ -45,7 +45,7 @@ public class LoginController extends BaseContorller {
 
 
     @Autowired(required = false)
-    public LoginController(UserService userService, UserTokenService userTokenService,
+    public LoginController(UsersService userService, UserTokenService userTokenService,
                            VerificationCodeService verificationCodeService, PasswordHelper passwordHelper, SysLogService sysLogService) {
         this.userService = userService;
         this.userTokenService = userTokenService;
@@ -138,12 +138,12 @@ public class LoginController extends BaseContorller {
 
         LoginLog loginLog = LoginLog.Builder.aLoginLog()
                 .withCreateTime(new Date())
-                .withLoginSuccess(Integer.valueOf(usersVo.getCode().toString()))
+                .withLoginSuccess(Byte.valueOf(usersVo.getCode().toString()))
                 .withIp(ipAddr)
                 .withLocation(ipLocation)
-                .withClientType(userAgent.getOperatingSystem().getName())
+                .withDeviceType(userAgent.getOperatingSystem().getName())
                 .withKarnelVersion(browserVersion == null ? "" : browserVersion.getVersion())
-                .withClientAgent(userAgent.getBrowser().getName())
+                .withAgentType(userAgent.getBrowser().getName())
                 .withUseragent(request.getHeader("User-Agent"))
                 .withMessage(message)
                 .build();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.LoginLogMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.LoginLog">
+<mapper namespace="com.jay.book.admin.dao.LoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.LoginLog">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="account" jdbcType="VARCHAR" property="account" />
@@ -30,7 +30,7 @@
     delete from login_log
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.LoginLog">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.LoginLog">
     insert into login_log (table_id, user_id, account, 
       login_success, ip, location, 
       device_type, agent_type, karnel_version, 
@@ -42,7 +42,7 @@
       #{useragent,jdbcType=VARCHAR}, #{spendTime,jdbcType=BIGINT}, #{message,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.LoginLog">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.LoginLog">
     insert into login_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.LoginLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.LoginLog">
     update login_log
     <set>
       <if test="userId != null">
@@ -169,7 +169,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.LoginLog">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.LoginLog">
     update login_log
     set user_id = #{userId,jdbcType=INTEGER},
       account = #{account,jdbcType=VARCHAR},
@@ -228,15 +228,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.LoginLog" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.LoginLog" resultMap="BaseResultMap">
     select t.* from login_log t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.LoginLog" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.LoginLog" resultMap="BaseResultMap">
     select t.* from login_log t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.LoginLog" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.LoginLog" resultMap="BaseResultMap">
     select t.* from login_log t
     <include refid="base_query" />
   </select>

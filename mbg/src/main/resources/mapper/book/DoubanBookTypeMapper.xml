@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jay.book.admin.dao.DoubanBookTypeMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.book.entity.DoubanBookType">
+  <resultMap id="BaseResultMap" type="com.jay.book.book.entity.DoubanBookType">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="link" jdbcType="VARCHAR" property="link" />
@@ -20,7 +20,7 @@
     delete from douban_book_type
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insertSelective" parameterType="com.jay.book.module.book.entity.DoubanBookType">
+  <insert id="insertSelective" parameterType="com.jay.book.book.entity.DoubanBookType">
     insert into douban_book_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -51,7 +51,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.book.entity.DoubanBookType">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.book.entity.DoubanBookType">
     update douban_book_type
     <set>
       <if test="type != null">
@@ -82,15 +82,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.book.entity.DoubanBookType" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.book.entity.DoubanBookType" resultMap="BaseResultMap">
     select t.* from douban_book_type t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.book.entity.DoubanBookType" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.book.entity.DoubanBookType" resultMap="BaseResultMap">
     select t.* from douban_book_type t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.book.entity.DoubanBookType" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.book.entity.DoubanBookType" resultMap="BaseResultMap">
     select t.* from douban_book_type t
     <include refid="base_query" />
   </select>

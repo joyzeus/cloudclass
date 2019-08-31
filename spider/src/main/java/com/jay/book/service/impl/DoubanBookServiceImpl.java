@@ -1,9 +1,9 @@
 package com.jay.book.service.impl;
 
-import com.jay.book.module.book.dao.DoubanBookMapper;
-import com.jay.book.module.book.dao.DoubanBookTypeMapper;
-import com.jay.book.module.book.entity.DoubanBook;
-import com.jay.book.module.book.entity.DoubanBookType;
+import com.jay.book.book.dao.DoubanBookMapper;
+import com.jay.book.book.dao.DoubanBookTypeMapper;
+import com.jay.book.book.entity.DoubanBook;
+import com.jay.book.book.entity.DoubanBookType;
 import com.jay.book.service.base.DoubanBookService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

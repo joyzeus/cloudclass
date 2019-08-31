@@ -1,9 +1,9 @@
 package com.jay.book.admin.config.shiro;
 
 import com.jay.book.admin.constant.RedisKeyEnum;
-import com.jay.book.admin.entity.model.Users;
 import com.jay.book.admin.config.redis.RedisUtil;
-import com.jay.book.admin.service.base.UserService;
+import com.jay.book.admin.service.base.UsersService;
+import com.jay.book.admin.entity.Users;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
-    private UserService userService;
+    private UsersService usersService;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -50,8 +50,7 @@ public class ShiroRealm extends AuthorizingRealm {
             throw new RuntimeException("您的账号已经退出登录,请重新登录");
         }
 
-
-        Users user = userService.selectByUserId(Integer.valueOf(userId));
+        Users user = usersService.selectByUserId(Integer.valueOf(userId));
         if (user == null) {
             throw new UnknownAccountException("账户不存在");
         }

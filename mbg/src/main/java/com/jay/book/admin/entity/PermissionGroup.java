@@ -1,4 +1,4 @@
-package com.jay.book.module.admin.entity;
+package com.jay.book.admin.entity;
 
 import java.io.Serializable;
 import java.util.Date;

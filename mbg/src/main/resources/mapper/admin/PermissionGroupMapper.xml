@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.PermissionGroupMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.PermissionGroup">
+<mapper namespace="com.jay.book.admin.dao.PermissionGroupMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.PermissionGroup">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -22,7 +22,7 @@
     delete from permission_group
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.PermissionGroup">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.PermissionGroup">
     insert into permission_group (table_id, group_name, description, 
       group_type, create_time, create_user_id
       )
@@ -30,7 +30,7 @@
       #{groupType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.PermissionGroup">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.PermissionGroup">
     insert into permission_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.PermissionGroup">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.PermissionGroup">
     update permission_group
     <set>
       <if test="groupName != null">
@@ -94,7 +94,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.PermissionGroup">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.PermissionGroup">
     update permission_group
     set group_name = #{groupName,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
@@ -125,15 +125,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.PermissionGroup" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.PermissionGroup" resultMap="BaseResultMap">
     select t.* from permission_group t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.PermissionGroup" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.PermissionGroup" resultMap="BaseResultMap">
     select t.* from permission_group t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.PermissionGroup" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.PermissionGroup" resultMap="BaseResultMap">
     select t.* from permission_group t
     <include refid="base_query" />
   </select>

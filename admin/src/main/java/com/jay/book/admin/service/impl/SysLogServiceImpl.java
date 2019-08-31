@@ -1,8 +1,8 @@
 package com.jay.book.admin.service.impl;
 
-import com.jay.book.admin.dao.LoginLogMapper;
-import com.jay.book.admin.entity.model.LoginLog;
 import com.jay.book.admin.service.base.SysLogService;
+import com.jay.book.admin.dao.LoginLogMapper;
+import com.jay.book.admin.entity.LoginLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

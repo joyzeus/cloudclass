@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.ExceptionLogMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.ExceptionLog">
+<mapper namespace="com.jay.book.admin.dao.ExceptionLogMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.ExceptionLog">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="class_name" jdbcType="VARCHAR" property="className" />
     <result column="method_name" jdbcType="VARCHAR" property="methodName" />
@@ -16,7 +16,7 @@
     <result column="resolve_time" jdbcType="TIMESTAMP" property="resolveTime" />
     <result column="resolve_userid" jdbcType="INTEGER" property="resolveUserid" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jay.book.module.admin.entity.ExceptionLog">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jay.book.admin.entity.ExceptionLog">
     <result column="exception_msg" jdbcType="LONGVARCHAR" property="exceptionMsg" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -38,7 +38,7 @@
     delete from exception_log
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.ExceptionLog">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.ExceptionLog">
     insert into exception_log (id, class_name, method_name, 
       exception_type, ip, create_userid, 
       addtime, view, view_time, 
@@ -50,7 +50,7 @@
       #{viewUserid,jdbcType=INTEGER}, #{resolve,jdbcType=BIT}, #{resolveTime,jdbcType=TIMESTAMP}, 
       #{resolveUserid,jdbcType=INTEGER}, #{exceptionMsg,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.ExceptionLog">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.ExceptionLog">
     insert into exception_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -141,7 +141,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.ExceptionLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.ExceptionLog">
     update exception_log
     <set>
       <if test="className != null">
@@ -186,7 +186,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jay.book.module.admin.entity.ExceptionLog">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jay.book.admin.entity.ExceptionLog">
     update exception_log
     set class_name = #{className,jdbcType=VARCHAR},
       method_name = #{methodName,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
       exception_msg = #{exceptionMsg,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.ExceptionLog">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.ExceptionLog">
     update exception_log
     set class_name = #{className,jdbcType=VARCHAR},
       method_name = #{methodName,jdbcType=VARCHAR},
@@ -265,15 +265,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.ExceptionLog" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.ExceptionLog" resultMap="BaseResultMap">
     select t.* from exception_log t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.ExceptionLog" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.ExceptionLog" resultMap="BaseResultMap">
     select t.* from exception_log t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.ExceptionLog" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.ExceptionLog" resultMap="BaseResultMap">
     select t.* from exception_log t
     <include refid="base_query" />
   </select>

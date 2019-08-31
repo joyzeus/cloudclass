@@ -2,9 +2,9 @@ package com.jay.book.admin.service.impl;
 
 import com.jay.book.admin.constant.RedisKeyEnum;
 import com.jay.book.admin.config.redis.RedisUtil;
-import com.jay.book.admin.dao.EmailConfigMapper;
-import com.jay.book.admin.entity.model.EmailConfig;
 import com.jay.book.admin.service.base.EmailConfigService;
+import com.jay.book.admin.dao.EmailConfigMapper;
+import com.jay.book.admin.entity.EmailConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class EmailConfigServiceImpl implements EmailConfigService {
 
     @Override
     public List<EmailConfig> get(EmailConfig emailConfig) {
-        return emailConfigMapper.get(emailConfig);
+        return emailConfigMapper.list(emailConfig);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EmailConfigServiceImpl implements EmailConfigService {
         // 发邮件账号
         // 禁用掉其他发件账号
         if (emailType != null && emailType == 1 && emailConfig.getTableId() != null) {
-            emailConfigMapper.resetSendEmailAccount(emailConfig.getTableId());
+//            emailConfigMapper.resetSendEmailAccount(emailConfig.getTableId());
             //重置一下邮件服务
             String key = RedisKeyEnum.SEND_EMAIL_LIST.getKey();
             if (redisUtil.has(key)) {
@@ -62,9 +62,9 @@ public class EmailConfigServiceImpl implements EmailConfigService {
         if (redisUtil.has(key)) {
             return redisUtil.get(key, EmailConfig.class);
         } else {
-            List<EmailConfig> emailConfigList = emailConfigMapper.get(EmailConfig.Builder.anEmailConfig()
-                    .emailType(1)
-                    .enable(true)
+            List<EmailConfig> emailConfigList = emailConfigMapper.list(EmailConfig.Builder.anEmailConfig()
+                    .withEmailType(1)
+                    .withEnable(true)
                     .build());
             EmailConfig emailConfig = null;
             if (emailConfigList != null && emailConfigList.size() > 0) {
@@ -81,9 +81,9 @@ public class EmailConfigServiceImpl implements EmailConfigService {
         if (redisUtil.has(key)) {
             return redisUtil.getList(key, EmailConfig.class);
         } else {
-            List<EmailConfig> emailConfigList = emailConfigMapper.get(EmailConfig.Builder.anEmailConfig()
-                    .emailType(2)
-                    .enable(true)
+            List<EmailConfig> emailConfigList = emailConfigMapper.list(EmailConfig.Builder.anEmailConfig()
+                    .withEmailType(2)
+                    .withEnable(true)
                     .build());
             if (emailConfigList != null && emailConfigList.size() > 0) {
                 redisUtil.set(key, emailConfigList);

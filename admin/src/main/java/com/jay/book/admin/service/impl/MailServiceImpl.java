@@ -1,9 +1,9 @@
 package com.jay.book.admin.service.impl;
 
-import com.jay.book.admin.entity.model.EmailConfig;
 import com.jay.book.admin.service.base.EmailConfigService;
 import com.jay.book.admin.service.base.MailService;
 import com.jay.book.admin.util.LogUtil;
+import com.jay.book.admin.entity.EmailConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;

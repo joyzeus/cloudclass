@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.UsersMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.Users">
+<mapper namespace="com.jay.book.admin.dao.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.Users">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -28,7 +28,7 @@
     delete from users
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.Users">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.Users">
     insert into users (table_id, account, password, 
       username, mobile, email, 
       sex, icon, user_id, 
@@ -38,7 +38,7 @@
       #{sex,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.Users">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.Users">
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.Users">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.Users">
     update users
     <set>
       <if test="account != null">
@@ -147,7 +147,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.Users">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.Users">
     update users
     set account = #{account,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -198,15 +198,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.Users" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.Users" resultMap="BaseResultMap">
     select t.* from users t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.Users" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.Users" resultMap="BaseResultMap">
     select t.* from users t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.Users" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.Users" resultMap="BaseResultMap">
     select t.* from users t
     <include refid="base_query" />
   </select>

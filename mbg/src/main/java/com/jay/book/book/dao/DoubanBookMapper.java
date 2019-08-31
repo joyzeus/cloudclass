@@ -1,8 +1,8 @@
-package com.jay.book.module.book.dao;
+package com.jay.book.book.dao;
 
 
 import com.github.pagehelper.Page;
-import com.jay.book.module.book.entity.DoubanBook;
+import com.jay.book.book.entity.DoubanBook;
 
 import java.util.List;
 

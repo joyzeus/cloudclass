@@ -1,7 +1,7 @@
 package com.jay.book.service.base;
 
-import com.jay.book.module.book.entity.DoubanBook;
-import com.jay.book.module.book.entity.DoubanBookType;
+import com.jay.book.book.entity.DoubanBook;
+import com.jay.book.book.entity.DoubanBookType;
 
 public interface DoubanBookService {
 

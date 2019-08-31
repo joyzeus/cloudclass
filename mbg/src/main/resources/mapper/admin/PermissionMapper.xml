@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.PermissionMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.Permission">
+<mapper namespace="com.jay.book.admin.dao.PermissionMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.Permission">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="node_name" jdbcType="VARCHAR" property="nodeName" />
     <result column="path" jdbcType="VARCHAR" property="path" />
@@ -25,7 +25,7 @@
     delete from permission
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.Permission">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.Permission">
     insert into permission (table_id, node_name, path, 
       parent_id, has_child, type, 
       order_id, actived, deleted
@@ -35,7 +35,7 @@
       #{orderId,jdbcType=INTEGER}, #{actived,jdbcType=TINYINT}, #{deleted,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.Permission">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.Permission">
     insert into permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -96,7 +96,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.Permission">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.Permission">
     update permission
     <set>
       <if test="nodeName != null">
@@ -126,7 +126,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.Permission">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.Permission">
     update permission
     set node_name = #{nodeName,jdbcType=VARCHAR},
       path = #{path,jdbcType=VARCHAR},
@@ -169,15 +169,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.Permission" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.Permission" resultMap="BaseResultMap">
     select t.* from permission t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.Permission" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.Permission" resultMap="BaseResultMap">
     select t.* from permission t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.Permission" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.Permission" resultMap="BaseResultMap">
     select t.* from permission t
     <include refid="base_query" />
   </select>

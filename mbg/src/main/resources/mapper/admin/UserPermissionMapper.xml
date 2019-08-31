@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.UserPermissionMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.UserPermission">
+<mapper namespace="com.jay.book.admin.dao.UserPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.UserPermission">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="relation_id" jdbcType="INTEGER" property="relationId" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -21,13 +21,13 @@
     delete from user_permission
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.UserPermission">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.UserPermission">
     insert into user_permission (table_id, relation_id, type, 
       user_id, expired_time)
     values (#{tableId,jdbcType=INTEGER}, #{relationId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
       #{userId,jdbcType=INTEGER}, #{expiredTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.UserPermission">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.UserPermission">
     insert into user_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.UserPermission">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.UserPermission">
     update user_permission
     <set>
       <if test="relationId != null">
@@ -82,7 +82,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.UserPermission">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.UserPermission">
     update user_permission
     set relation_id = #{relationId,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
@@ -109,15 +109,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.UserPermission" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.UserPermission" resultMap="BaseResultMap">
     select t.* from user_permission t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.UserPermission" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.UserPermission" resultMap="BaseResultMap">
     select t.* from user_permission t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.UserPermission" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.UserPermission" resultMap="BaseResultMap">
     select t.* from user_permission t
     <include refid="base_query" />
   </select>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jay.book.module.admin.dao.PermissionGroupRelationMapper">
-  <resultMap id="BaseResultMap" type="com.jay.book.module.admin.entity.PermissionGroupRelation">
+<mapper namespace="com.jay.book.admin.dao.PermissionGroupRelationMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.PermissionGroupRelation">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="group_id" jdbcType="INTEGER" property="groupId" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
@@ -21,13 +21,13 @@
     delete from permission_group_relation
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation">
+  <insert id="insert" parameterType="com.jay.book.admin.entity.PermissionGroupRelation">
     insert into permission_group_relation (table_id, group_id, group_name, 
       permission_id, permission_name)
     values (#{tableId,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, 
       #{permissionId,jdbcType=INTEGER}, #{permissionName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation">
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.PermissionGroupRelation">
     insert into permission_group_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.PermissionGroupRelation">
     update permission_group_relation
     <set>
       <if test="groupId != null">
@@ -82,7 +82,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation">
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.PermissionGroupRelation">
     update permission_group_relation
     set group_id = #{groupId,jdbcType=INTEGER},
       group_name = #{groupName,jdbcType=VARCHAR},
@@ -109,15 +109,15 @@
       </if>
     </trim>
   </sql>
-  <select id="find" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation" resultMap="BaseResultMap">
+  <select id="find" parameterType="com.jay.book.admin.entity.PermissionGroupRelation" resultMap="BaseResultMap">
     select t.* from permission_group_relation t
     <include refid="base_query" />
   </select>
-  <select id="list" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.jay.book.admin.entity.PermissionGroupRelation" resultMap="BaseResultMap">
     select t.* from permission_group_relation t
     <include refid="base_query" />
   </select>
-  <select id="pageList" parameterType="com.jay.book.module.admin.entity.PermissionGroupRelation" resultMap="BaseResultMap">
+  <select id="pageList" parameterType="com.jay.book.admin.entity.PermissionGroupRelation" resultMap="BaseResultMap">
     select t.* from permission_group_relation t
     <include refid="base_query" />
   </select>

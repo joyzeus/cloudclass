@@ -1,8 +1,8 @@
 package com.jay.book.admin.service.base;
 
-import com.jay.book.admin.entity.model.Users;
+import com.jay.book.admin.entity.Users;
 
-public interface UserService {
+public interface UsersService {
 
     Users selectByAccount(String account);
 

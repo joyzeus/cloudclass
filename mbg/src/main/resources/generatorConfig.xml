@@ -31,7 +31,7 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.jay.book.module.admin.entity" targetProject="mbg/src/main/java">
+        <javaModelGenerator targetPackage="com.jay.book.admin.entity" targetProject="mbg/src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -40,7 +40,7 @@
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jay.book.module.admin.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jay.book.admin.dao"
                              targetProject="mbg/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>

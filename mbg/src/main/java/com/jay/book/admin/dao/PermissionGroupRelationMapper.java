@@ -1,9 +1,12 @@
-package com.jay.book.module.admin.dao;
+package com.jay.book.admin.dao;
 
 import com.github.pagehelper.Page;
-import com.jay.book.module.admin.entity.PermissionGroupRelation;
+import com.jay.book.admin.entity.PermissionGroupRelation;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
+@Mapper
 public interface PermissionGroupRelationMapper {
     int deleteByPrimaryKey(Integer tableId);
 

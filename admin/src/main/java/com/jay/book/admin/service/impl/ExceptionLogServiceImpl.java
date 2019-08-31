@@ -1,8 +1,8 @@
 package com.jay.book.admin.service.impl;
 
-import com.jay.book.admin.dao.ExceptionLogMapper;
-import com.jay.book.admin.entity.model.ExceptionLog;
 import com.jay.book.admin.service.base.ExceptionLogService;
+import com.jay.book.admin.dao.ExceptionLogMapper;
+import com.jay.book.admin.entity.ExceptionLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

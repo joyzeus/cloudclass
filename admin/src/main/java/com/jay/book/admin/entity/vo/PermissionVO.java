@@ -1,6 +1,6 @@
 package com.jay.book.admin.entity.vo;
 
-import com.jay.book.module.admin.entity.Permission;
+import com.jay.book.admin.entity.Permission;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
