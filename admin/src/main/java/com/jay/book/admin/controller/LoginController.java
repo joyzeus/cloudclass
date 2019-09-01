@@ -78,19 +78,19 @@ public class LoginController extends BaseContorller {
         long startTime = System.nanoTime();
         UsersVo usersVo = new UsersVo();
         //1.验证验证码是否有效
-        String uuid = userLoginBO.getUuid();
-        Integer code = verificationCodeService.authVerificationCode(uuid, userLoginBO.getVerificationCode());
-        if (code == 1) {
-            usersVo.setCode(ResultCode.FAILED.getCode());
-            resultWithLog(request, usersVo, "验证码不正确", startTime);
-            return usersVo;
-        } else if (code == 2) {
-            usersVo.setCode(ResultCode.FAILED.getCode());
-            resultWithLog(request, usersVo, "验证码错误", startTime);
-            return usersVo;
-        }
+//        String uuid = userLoginBO.getUuid();
+//        Integer code = verificationCodeService.authVerificationCode(uuid, userLoginBO.getVerificationCode());
+//        if (code == 1) {
+//            usersVo.setCode(ResultCode.FAILED.getCode());
+//            resultWithLog(request, usersVo, "验证码不正确", startTime);
+//            return usersVo;
+//        } else if (code == 2) {
+//            usersVo.setCode(ResultCode.FAILED.getCode());
+//            resultWithLog(request, usersVo, "验证码错误", startTime);
+//            return usersVo;
+//        }
 
-        String account = userLoginBO.getAccount();
+        String account = userLoginBO.getUsername();
         if (StringUtils.isEmpty(account)) {
             usersVo.setCode(ResultCode.FAILED.getCode());
             resultWithLog(request, usersVo, "账号未填写", startTime);
@@ -112,6 +112,9 @@ public class LoginController extends BaseContorller {
             return usersVo;
         }
 
+
+        usersVo.setAccout(user.getAccount());
+        usersVo.setUserId(user.getUserId());
         //3.判断用户密码是否正确
         String password = user.getPassword();
         if (StringUtils.equals(MD5Util.encode(loginBOPassword), password)) {
@@ -131,6 +134,7 @@ public class LoginController extends BaseContorller {
     }
 
     public void resultWithLog(HttpServletRequest request, UsersVo usersVo, String message, Long startTime) {
+        usersVo.setMessage(message);
         String ipAddr = IPUtil.getIpAddr(request);
         String ipLocation = IPUtil.getIPLocation(ipAddr);
         UserAgent userAgent = UserAgentUtils.getUserAgent(request);
@@ -138,7 +142,7 @@ public class LoginController extends BaseContorller {
 
         LoginLog loginLog = LoginLog.Builder.aLoginLog()
                 .withCreateTime(new Date())
-                .withLoginSuccess(Byte.valueOf(usersVo.getCode().toString()))
+                .withLoginSuccess(Integer.valueOf(usersVo.getCode().toString()))
                 .withIp(ipAddr)
                 .withLocation(ipLocation)
                 .withDeviceType(userAgent.getOperatingSystem().getName())

@@ -94,6 +94,7 @@ CREATE TABLE `douban_movie_comments` (
                                          PRIMARY KEY (`comment_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='豆瓣电影评论表';
 
+
 CREATE TABLE `douban_book` (
                                `table_id` int(11) NOT NULL AUTO_INCREMENT,
                                `book_id` int(11) NOT NULL DEFAULT '0',

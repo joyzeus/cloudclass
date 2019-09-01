@@ -13,7 +13,7 @@ public class LoginLog implements Serializable {
 
     private String account;
 
-    private Byte loginSuccess;
+    private Integer loginSuccess;
 
     private String ip;
 
@@ -82,7 +82,7 @@ public class LoginLog implements Serializable {
             return this;
         }
 
-        public Builder withLoginSuccess(Byte loginSuccess) {
+        public Builder withLoginSuccess(Integer loginSuccess) {
             loginLog.setLoginSuccess(loginSuccess);
             return this;
         }

@@ -29,18 +29,22 @@ public class MenuManageServiceImpl implements MenuManageService {
     }
 
     public List<PermissionVO> getMenuTree() {
-        List<PermissionVO> data;
+        return getChildMenuTree(0);
+    }
+
+    @Override
+    public List<PermissionVO> getChildMenuTree(Integer parentId) {
+        List<Permission> data;
         String key = RedisKeyEnum.PERMISSION_TREE.getKey();
         if (redisUtil.has(key)) {
-            data = redisUtil.getList(key, PermissionVO.class);
+            data = redisUtil.getList(key, Permission.class);
         } else {
-            List<Permission> list = permissionMapper.list(null);
-            data = toTree(list, 0);
+            data = permissionMapper.list(null);
             if (data != null && data.size() > 0) {
                 redisUtil.set(key, data);
             }
         }
-        return data;
+        return toTree(data, parentId);
     }
 
     List<PermissionVO> toTree(List<Permission> list, Integer parentId) {
