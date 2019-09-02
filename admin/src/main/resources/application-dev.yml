@@ -64,7 +64,6 @@ logging:
   level:
     com.zhongye.manager.module.*.dao: debug
 
-
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mySecret #JWT加解密使用的密钥

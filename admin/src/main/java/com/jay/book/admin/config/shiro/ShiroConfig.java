@@ -45,7 +45,7 @@ public class ShiroConfig {
 
         Map<String, String> filterMap = new LinkedHashMap<>();
         filterMap.put("/user/login", "anon");
-        filterMap.put("/sys/menu/menuTree", "anon");
+//        filterMap.put("/sys/menu/menuTree", "anon");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
         return shiroFilter;
     }
