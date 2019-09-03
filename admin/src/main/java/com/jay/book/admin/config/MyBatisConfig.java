@@ -8,6 +8,4 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @MapperScan("com.jay.book.*.dao")
 public class MyBatisConfig {
-
-
 }

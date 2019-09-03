@@ -15,24 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * oauth2过滤器
- *
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2017-05-20 13:00
- */
 public class OAuth2Filter extends AuthenticatingFilter {
 
     @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) throws Exception {
-        //获取请求token
         String token = getRequestToken((HttpServletRequest) request);
-
         if (StringUtils.isBlank(token)) {
             return null;
         }
-
         return new AuthToken(token);
     }
 
@@ -41,7 +31,6 @@ public class OAuth2Filter extends AuthenticatingFilter {
         if (((HttpServletRequest) request).getMethod().equals(RequestMethod.OPTIONS.name())) {
             return true;
         }
-
         return false;
     }
 
@@ -53,14 +42,10 @@ public class OAuth2Filter extends AuthenticatingFilter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
-
             String json = JacksonUtil.toJson(R.error(401, "invalid token"));
-
             httpResponse.getWriter().print(json);
-
             return false;
         }
-
         return executeLogin(request, response);
     }
 
@@ -77,9 +62,8 @@ public class OAuth2Filter extends AuthenticatingFilter {
             String json = JacksonUtil.toJson(r);
             httpResponse.getWriter().print(json);
         } catch (IOException e1) {
-
+            e1.printStackTrace();
         }
-
         return false;
     }
 
@@ -89,7 +73,6 @@ public class OAuth2Filter extends AuthenticatingFilter {
     private String getRequestToken(HttpServletRequest httpRequest) {
         //从header中获取token
         String token = httpRequest.getHeader("token");
-
         //如果header中不存在token，则从参数中获取token
         if (StringUtils.isBlank(token)) {
             token = httpRequest.getParameter("token");

@@ -7,10 +7,20 @@ import com.jay.book.admin.entity.Users;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Service
+@Component
 public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
@@ -25,8 +35,18 @@ public class ShiroRealm extends AuthorizingRealm {
     }
 
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        Users users = (Users) principals.getPrimaryPrincipal();
+
+        //用户权限列表
+        Set<String> permsSet = new HashSet<String>();
+        List<String> list = new ArrayList<String>();
+        list.add("sys:menu:menuTree");
+        list.add("sys:menu:getLeftMenuList");
+        permsSet.addAll(list);
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        info.setStringPermissions(permsSet);
+        return info;
     }
 
     @Override

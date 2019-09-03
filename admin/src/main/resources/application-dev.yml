@@ -49,6 +49,16 @@ spring:
     username: 13006382305@163.com
     password: zx19930724
 
+  rabbitmq:
+    host: 192.168.1.166
+    port: 5672
+    username: jay
+    password: 123456zx.
+    template:
+      retry:
+        enabled: true
+        initial-interval: 2000ms
+
 mybatis:
   mapper-locations:
     - classpath:mapper/**/*.xml
@@ -60,12 +70,10 @@ mybatis:
 
 
 logging:
-  config: admin/src/main/resources/logback-spring.xml
+  config: classpath:logback-spring.xml
   level:
     com.zhongye.manager.module.*.dao: debug
 
-jwt:
-  tokenHeader: Authorization #JWT存储的请求头
-  secret: mySecret #JWT加解密使用的密钥
-  expiration: 604800 #JWT的超期限时间(60*60*24)
-  tokenHead: token  #JWT负载中拿到开头
+token:
+  secret: secret
+  expiration: 604800

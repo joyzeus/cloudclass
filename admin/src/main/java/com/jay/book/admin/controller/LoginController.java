@@ -1,6 +1,5 @@
 package com.jay.book.admin.controller;
 
-import com.jay.book.admin.config.shiro.PasswordHelper;
 import com.jay.book.admin.entity.bo.UserLoginBO;
 import com.jay.book.admin.entity.vo.UsersVo;
 import com.jay.book.admin.service.base.SysLogService;
@@ -39,18 +38,15 @@ public class LoginController extends BaseContorller {
 
     private final VerificationCodeService verificationCodeService;
 
-    private final PasswordHelper passwordHelper;
-
     private final SysLogService sysLogService;
 
 
     @Autowired(required = false)
     public LoginController(UsersService userService, UserTokenService userTokenService,
-                           VerificationCodeService verificationCodeService, PasswordHelper passwordHelper, SysLogService sysLogService) {
+                           VerificationCodeService verificationCodeService, SysLogService sysLogService) {
         this.userService = userService;
         this.userTokenService = userTokenService;
         this.verificationCodeService = verificationCodeService;
-        this.passwordHelper = passwordHelper;
         this.sysLogService = sysLogService;
     }
 
@@ -59,7 +55,6 @@ public class LoginController extends BaseContorller {
         Users user = new Users();
         user.setMobile(mobile);
         user.setPassword(password);
-        passwordHelper.encryptPassword(user);
         return R.ok().put("count", userService.save(user));
     }
 
@@ -108,10 +103,10 @@ public class LoginController extends BaseContorller {
         Users user = userService.selectByAccount(account);
         if (user == null) {
             usersVo.setCode(ResultCode.FAILED.getCode());
+            usersVo.setAccout(account);
             resultWithLog(request, usersVo, "账号不存在", startTime);
             return usersVo;
         }
-
 
         usersVo.setAccout(user.getAccount());
         usersVo.setUserId(user.getUserId());

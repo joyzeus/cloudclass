@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jay.book.admin.dao.WebLogMapper">
+  <resultMap id="BaseResultMap" type="com.jay.book.admin.entity.WebLog">
+    <id column="table_id" jdbcType="INTEGER" property="tableId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="spend_time" jdbcType="INTEGER" property="spendTime" />
+    <result column="base_path" jdbcType="VARCHAR" property="basePath" />
+    <result column="uri" jdbcType="VARCHAR" property="uri" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    table_id, user_id, start_time, spend_time, base_path, uri, url, method, ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from web_log
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from web_log
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jay.book.admin.entity.WebLog">
+    insert into web_log (table_id, user_id, start_time, 
+      spend_time, base_path, uri, 
+      url, method, ip)
+    values (#{tableId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{spendTime,jdbcType=INTEGER}, #{basePath,jdbcType=VARCHAR}, #{uri,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jay.book.admin.entity.WebLog">
+    insert into web_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        table_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="spendTime != null">
+        spend_time,
+      </if>
+      <if test="basePath != null">
+        base_path,
+      </if>
+      <if test="uri != null">
+        uri,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spendTime != null">
+        #{spendTime,jdbcType=INTEGER},
+      </if>
+      <if test="basePath != null">
+        #{basePath,jdbcType=VARCHAR},
+      </if>
+      <if test="uri != null">
+        #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jay.book.admin.entity.WebLog">
+    update web_log
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spendTime != null">
+        spend_time = #{spendTime,jdbcType=INTEGER},
+      </if>
+      <if test="basePath != null">
+        base_path = #{basePath,jdbcType=VARCHAR},
+      </if>
+      <if test="uri != null">
+        uri = #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jay.book.admin.entity.WebLog">
+    update web_log
+    set user_id = #{userId,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      spend_time = #{spendTime,jdbcType=INTEGER},
+      base_path = #{basePath,jdbcType=VARCHAR},
+      uri = #{uri,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR}
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+  <sql id="base_query">
+    <trim prefix="WHERE" prefixOverrides="AND | OR">
+      <if test="null != tableId">
+         and t.table_id = #{tableId,jdbcType=INTEGER}
+      </if>
+      <if test="null != userId">
+         and t.user_id = #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="null != startTime">
+         and t.start_time = #{startTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="null != spendTime">
+         and t.spend_time = #{spendTime,jdbcType=INTEGER}
+      </if>
+      <if test="null != basePath">
+         and t.base_path = #{basePath,jdbcType=VARCHAR}
+      </if>
+      <if test="null != uri">
+         and t.uri = #{uri,jdbcType=VARCHAR}
+      </if>
+      <if test="null != url">
+         and t.url = #{url,jdbcType=VARCHAR}
+      </if>
+      <if test="null != method">
+         and t.method = #{method,jdbcType=VARCHAR}
+      </if>
+      <if test="null != ip">
+         and t.ip = #{ip,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </sql>
+  <select id="find" parameterType="com.jay.book.admin.entity.WebLog" resultMap="BaseResultMap">
+    select t.* from web_log t
+    <include refid="base_query" />
+  </select>
+  <select id="list" parameterType="com.jay.book.admin.entity.WebLog" resultMap="BaseResultMap">
+    select t.* from web_log t
+    <include refid="base_query" />
+  </select>
+  <select id="pageList" parameterType="com.jay.book.admin.entity.WebLog" resultMap="BaseResultMap">
+    select t.* from web_log t
+    <include refid="base_query" />
+  </select>
+</mapper>
