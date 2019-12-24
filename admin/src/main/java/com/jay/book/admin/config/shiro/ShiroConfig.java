@@ -15,7 +15,10 @@ import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Configuration
 public class ShiroConfig {
 

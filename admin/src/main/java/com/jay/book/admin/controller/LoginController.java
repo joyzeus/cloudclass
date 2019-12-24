@@ -1,5 +1,7 @@
 package com.jay.book.admin.controller;
 
+import com.jay.book.admin.entity.LoginLog;
+import com.jay.book.admin.entity.Users;
 import com.jay.book.admin.entity.bo.UserLoginBO;
 import com.jay.book.admin.entity.vo.UsersVo;
 import com.jay.book.admin.service.base.SysLogService;
@@ -11,8 +13,6 @@ import com.jay.book.admin.util.MD5Util;
 import com.jay.book.admin.util.R;
 import com.jay.book.admin.util.UserAgentUtils;
 import com.jay.book.common.api.ResultCode;
-import com.jay.book.admin.entity.LoginLog;
-import com.jay.book.admin.entity.Users;
 import eu.bitwalker.useragentutils.UserAgent;
 import eu.bitwalker.useragentutils.Version;
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +28,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @RestController
 @RequestMapping("/user")
 public class LoginController extends BaseContorller {

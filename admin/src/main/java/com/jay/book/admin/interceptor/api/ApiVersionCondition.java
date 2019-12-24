@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 public class ApiVersionCondition implements RequestCondition<ApiVersionCondition> {
 
     private final static Pattern VERSION_PREFIX_PATTERN = Pattern.compile("v(\\d+)/");

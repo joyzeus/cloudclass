@@ -3,7 +3,10 @@ package com.jay.book.admin.config;
 import org.springframework.amqp.core.*;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @SpringBootConfiguration
 public class RabbitMQConfig {
 

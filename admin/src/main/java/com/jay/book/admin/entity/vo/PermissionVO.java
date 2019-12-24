@@ -6,6 +6,10 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class PermissionVO extends Permission {

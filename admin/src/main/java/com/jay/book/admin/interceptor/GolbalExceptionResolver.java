@@ -1,13 +1,13 @@
 package com.jay.book.admin.interceptor;
 
+import com.jay.book.admin.entity.EmailConfig;
+import com.jay.book.admin.entity.ExceptionLog;
 import com.jay.book.admin.service.base.EmailConfigService;
 import com.jay.book.admin.service.base.ExceptionLogService;
 import com.jay.book.admin.service.base.MailService;
 import com.jay.book.admin.util.IPUtil;
 import com.jay.book.admin.util.JacksonUtil;
 import com.jay.book.admin.util.R;
-import com.jay.book.admin.entity.EmailConfig;
-import com.jay.book.admin.entity.ExceptionLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -27,6 +27,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Configuration
 public class GolbalExceptionResolver implements HandlerExceptionResolver {
 

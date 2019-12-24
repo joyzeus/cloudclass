@@ -18,8 +18,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-@Service
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Component
 public class ShiroRealm extends AuthorizingRealm {
 

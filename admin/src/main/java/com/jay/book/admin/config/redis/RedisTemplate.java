@@ -3,7 +3,10 @@ package com.jay.book.admin.config.redis;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.stereotype.Component;
-
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Component
 public class RedisTemplate<K, V> extends org.springframework.data.redis.core.RedisTemplate<K, V> {
 

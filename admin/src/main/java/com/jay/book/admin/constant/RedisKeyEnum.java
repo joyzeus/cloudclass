@@ -1,5 +1,8 @@
 package com.jay.book.admin.constant;
-
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 public enum RedisKeyEnum {
 
     VERTIFICATIONCDOE("sys:user:code:", "验证码"),

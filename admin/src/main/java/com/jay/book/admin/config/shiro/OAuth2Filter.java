@@ -14,7 +14,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 public class OAuth2Filter extends AuthenticatingFilter {
 
     @Override

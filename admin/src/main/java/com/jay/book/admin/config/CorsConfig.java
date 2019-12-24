@@ -7,7 +7,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 

@@ -6,6 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 public class ApiInterceptor implements HandlerInterceptor {
 
     @Override

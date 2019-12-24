@@ -7,6 +7,10 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @Configuration
 public class RedisConfig {
 

@@ -7,6 +7,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+/**
+ * @author zhouxu
+ * @date 2019/12/24
+ */
 @SpringBootConfiguration
 public class WebConfig extends WebMvcConfigurationSupport {
 
