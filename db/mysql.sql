@@ -61,7 +61,7 @@ CREATE TABLE `users` (
                          PRIMARY KEY (`table_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 
-INSERT INTO `manager`.`users`(`table_id`, `account`, `password`, `username`, `mobile`, `email`, `sex`, `icon`, `user_id`, `create_time`, `update_time`) VALUES (1, '13006382305', 'e10adc3949ba59abbe56e057f20f883e', '周旭', '13006382305', '1419982188@qq.com', 1, '', 10000, '2019-08-07 16:31:28', '2019-08-07 16:32:11');
+INSERT INTO `users`(`table_id`, `account`, `password`, `username`, `mobile`, `email`, `sex`, `icon`, `user_id`, `create_time`, `update_time`) VALUES (1, '13006382305', 'e10adc3949ba59abbe56e057f20f883e', '周旭', '13006382305', '1419982188@qq.com', 1, '', 10000, '2019-08-07 16:31:28', '2019-08-07 16:32:11');
 
 
 
