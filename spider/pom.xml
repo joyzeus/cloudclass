@@ -9,10 +9,6 @@
     <name>spider</name>
     <description>Demo project for Spring Boot</description>
 
-    <properties>
-        <java.version>12</java.version>
-    </properties>
-
     <parent>
         <groupId>com.jay.book</groupId>
         <artifactId>book</artifactId>
