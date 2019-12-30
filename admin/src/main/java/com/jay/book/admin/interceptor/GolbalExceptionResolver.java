@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +32,7 @@ import java.util.stream.Collectors;
  * @author zhouxu
  * @date 2019/12/24
  */
-@Configuration
+@ControllerAdvice
 public class GolbalExceptionResolver implements HandlerExceptionResolver {
 
     private final ExceptionLogService exceptionLogService;
