@@ -155,11 +155,5 @@ public class LoginController extends BaseContorller {
         loginLog.setAccount(usersVo.getAccout());
         sysLogService.insertLog(loginLog);
     }
-
-    @GetMapping("/test")
-    public R register() {
-        int i = 3 / 0;
-        return R.ok();
-    }
 }
 

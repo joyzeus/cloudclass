@@ -14,6 +14,8 @@
         <module>admin</module>
         <module>spider</module>
         <module>mbg</module>
+        <module>chat</module>
+        <module>user</module>
     </modules>
 
     <parent>

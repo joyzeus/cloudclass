@@ -7,9 +7,9 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&characterEncoding=UTF-8&useSSL=true&&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456zx.
+    password: 123456
     driverClassName: com.mysql.cj.jdbc.Driver
-    #      #最大活跃数
+    #最大活跃数
     maxActive: 20
     #初始化数量
     initialSize: 1
@@ -49,16 +49,16 @@ spring:
     username: 13006382305@163.com
     password: zx19930724
 
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: jay
-    password: 123456zx.
-    virtual-host: ZhongYeHost
-    template:
-      retry:
-        enabled: true
-        initial-interval: 2000ms
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: jay
+#    password: 123456zx.
+#    virtual-host: ZhongYeHost
+#    template:
+#      retry:
+#        enabled: true
+#        initial-interval: 2000ms
 
 mybatis:
   mapper-locations:
