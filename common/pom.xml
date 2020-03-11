@@ -3,19 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jay.book</groupId>
     <artifactId>common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>common</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>com.jay.book</groupId>
-        <artifactId>book</artifactId>
+        <groupId>com.igeek</groupId>
+        <artifactId>chat</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-
     <dependencies>
+
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
     </dependencies>
 </project>

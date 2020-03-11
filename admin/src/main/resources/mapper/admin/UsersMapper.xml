@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeek.admin.dao.UsersMapper">
+    <resultMap id="BaseResultMap" type="com.igeek.admin.entity.Users">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="account" jdbcType="VARCHAR" property="account"/>
+        <id column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="head_image" jdbcType="VARCHAR" property="headImage"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <result column="login_count" jdbcType="INTEGER" property="loginCount"/>
+        <result column="locked" jdbcType="BIT" property="locked"/>
+        <result column="login" jdbcType="BIT" property="login"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, account, mobile, email, password, nickname, sex, head_image, create_time, update_time,
+        last_login_time, login_count, locked, login
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="com.igeek.admin.entity.UsersKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.igeek.admin.entity.UsersKey">
+        delete from users
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insertSelective" parameterType="com.igeek.admin.entity.Users">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="account != null">
+                account,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="headImage != null">
+                head_image,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time,
+            </if>
+            <if test="loginCount != null">
+                login_count,
+            </if>
+            <if test="locked != null">
+                locked,
+            </if>
+            <if test="login != null">
+                login,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="headImage != null">
+                #{headImage,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastLoginTime != null">
+                #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginCount != null">
+                #{loginCount,jdbcType=INTEGER},
+            </if>
+            <if test="locked != null">
+                #{locked,jdbcType=BIT},
+            </if>
+            <if test="login != null">
+                #{login,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.entity.Users">
+        update users
+        <set>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="headImage != null">
+                head_image = #{headImage,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginCount != null">
+                login_count = #{loginCount,jdbcType=INTEGER},
+            </if>
+            <if test="locked != null">
+                locked = #{locked,jdbcType=BIT},
+            </if>
+            <if test="login != null">
+                login = #{login,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+        and account = #{account,jdbcType=VARCHAR}
+        and mobile = #{mobile,jdbcType=VARCHAR}
+    </update>
+    <select id="find" resultType="com.igeek.admin.entity.Users">
+      select <include refid="Base_Column_List"></include>
+      from users
+      <where>
+        <if test="id != null">
+          and id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="account != null">
+          and account = #{account,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+          and mobile = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+          and email = #{email,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+          and password = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null">
+          and nickname = #{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+          and sex = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="headImage != null">
+          and head_image = #{headImage,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+          and create_time = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateTime != null">
+          and update_time = #{updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="lastLoginTime != null">
+          and last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="loginCount != null">
+          and login_count = #{loginCount,jdbcType=INTEGER}
+        </if>
+        <if test="locked != null">
+          and locked = #{locked,jdbcType=BIT}
+        </if>
+        <if test="login != null">
+          and login = #{login,jdbcType=BIT}
+        </if>
+      </where>
+    </select>
+</mapper>
