@@ -51,7 +51,7 @@ public class DoubanBookSpider implements PageProcessor {
                 doubanBookService.insertOrUpdateBookType(DoubanBookType.builder()
                         .type(typeName)
                         .link(link)
-                        .count(Integer.valueOf(count))
+                        .count(StringUtils.isEmpty(count) ? 0 : Integer.parseInt(count))
                         .build());
 
                 Spider.create(this).addUrl(HOST + "/tag/" + URLEncoder.encode(typeName)).thread(1).run();
@@ -78,7 +78,7 @@ public class DoubanBookSpider implements PageProcessor {
                             .img(img)
                             .publishingHouse(split[1].trim())
                             .publishTime(DateUtil.tryParseDate(split[2].trim()))
-                            .rateCount(Integer.valueOf(count))
+                            .rateCount(StringUtils.isEmpty(count) ? 0 : Integer.parseInt(count))
                             .price(new BigDecimal(split[3].trim().replaceAll("[^0-9]", "")).divide(new BigDecimal(100)))
                             .build();
 
@@ -94,7 +94,7 @@ public class DoubanBookSpider implements PageProcessor {
                             .publishingHouse(split[2].trim())
                             .publishTime(DateUtil.tryParseDate(split[3].trim()))
                             .score(new BigDecimal(score))
-                            .rateCount(Integer.valueOf(count))
+                            .rateCount(StringUtils.isEmpty(count) ? 0 : Integer.parseInt(count))
                             .price(new BigDecimal(split[4].replaceAll("[^0-9]", "").trim()).divide(new BigDecimal(100)))
                             .build();
                     doubanBookService.insertOrUpdateBook(book);
