@@ -1,6 +1,6 @@
-package com.igeek.admin.entity.vo;
+package com.igeek.admin.model.entity.vo;
 
-import com.igeek.admin.entity.Permission;
+import com.igeek.admin.model.entity.Permission;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -1,7 +1,7 @@
 package com.igeek.admin.service.base;
 
 
-import com.igeek.admin.entity.vo.PermissionVO;
+import com.igeek.admin.model.entity.vo.PermissionVO;
 
 import java.util.List;
 

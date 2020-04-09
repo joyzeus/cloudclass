@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.igeek.admin.dao.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.admin.entity.Role">
+  <resultMap id="BaseResultMap" type="com.igeek.admin.model.entity.Role">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -21,13 +21,13 @@
     delete from role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.admin.entity.Role">
+  <insert id="insert" parameterType="com.igeek.admin.model.entity.Role">
     insert into role (id, name, type, 
       create_time, create_id)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.admin.entity.Role">
+  <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.Role">
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.entity.Role">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.model.entity.Role">
     update role
     <set>
       <if test="name != null">
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.entity.Role">
+  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.model.entity.Role">
     update role
     set name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},

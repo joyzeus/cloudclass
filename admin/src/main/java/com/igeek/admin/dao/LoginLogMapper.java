@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.LoginLog;
+import com.igeek.admin.model.entity.LoginLog;
 
 public interface LoginLogMapper {
     int deleteByPrimaryKey(Integer id);

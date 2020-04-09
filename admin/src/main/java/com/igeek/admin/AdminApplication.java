@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 /**
  * @author zhouxu
  * @date 2019/12/24
+ * @email 1419982188@qq.com
  */
 @SpringBootApplication
 public class AdminApplication extends SpringBootServletInitializer {

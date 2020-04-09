@@ -1,7 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.Permission;
-import com.igeek.admin.entity.vo.UserPermissionVO;
+import com.igeek.admin.model.entity.Permission;
 
 import java.util.List;
 

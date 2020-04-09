@@ -1,7 +1,7 @@
 package com.igeek.admin.service.impl;
 
 import com.igeek.admin.dao.UserPermissionMapper;
-import com.igeek.admin.entity.vo.UserPermissionVO;
+import com.igeek.admin.model.entity.vo.UserPermissionVO;
 import com.igeek.admin.service.base.MenuManageService;
 import com.igeek.admin.service.base.UserPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.EmailConfig;
+import com.igeek.admin.model.entity.EmailConfig;
 
 import java.util.List;
 

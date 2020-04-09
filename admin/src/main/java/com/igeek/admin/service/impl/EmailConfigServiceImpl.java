@@ -3,7 +3,7 @@ package com.igeek.admin.service.impl;
 import com.igeek.admin.config.redis.RedisUtil;
 import com.igeek.admin.constant.RedisKeyEnum;
 import com.igeek.admin.dao.EmailConfigMapper;
-import com.igeek.admin.entity.EmailConfig;
+import com.igeek.admin.model.entity.EmailConfig;
 import com.igeek.admin.service.base.EmailConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

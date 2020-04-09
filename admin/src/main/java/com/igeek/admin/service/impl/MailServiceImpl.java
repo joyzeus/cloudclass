@@ -1,6 +1,6 @@
 package com.igeek.admin.service.impl;
 
-import com.igeek.admin.entity.EmailConfig;
+import com.igeek.admin.model.entity.EmailConfig;
 import com.igeek.admin.service.base.EmailConfigService;
 import com.igeek.admin.service.base.MailService;
 import com.igeek.common.util.LogUtil;

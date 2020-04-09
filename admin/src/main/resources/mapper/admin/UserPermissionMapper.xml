@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.igeek.admin.dao.UserPermissionMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.admin.entity.UserPermission">
+  <resultMap id="BaseResultMap" type="com.igeek.admin.model.entity.UserPermission">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="permission_id" jdbcType="INTEGER" property="permissionId" />
@@ -20,13 +20,13 @@
     delete from user_permission
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.admin.entity.UserPermission">
+  <insert id="insert" parameterType="com.igeek.admin.model.entity.UserPermission">
     insert into user_permission (id, user_id, permission_id, 
       expired_time)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{permissionId,jdbcType=INTEGER}, 
       #{expiredTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.admin.entity.UserPermission">
+  <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.UserPermission">
     insert into user_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.entity.UserPermission">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.model.entity.UserPermission">
     update user_permission
     <set>
       <if test="userId != null">
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.entity.UserPermission">
+  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.model.entity.UserPermission">
     update user_permission
     set user_id = #{userId,jdbcType=INTEGER},
       permission_id = #{permissionId,jdbcType=INTEGER},

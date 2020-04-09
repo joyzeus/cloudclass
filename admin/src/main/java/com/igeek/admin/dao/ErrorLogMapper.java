@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.ErrorLog;
+import com.igeek.admin.model.entity.ErrorLog;
 
 public interface ErrorLogMapper {
     int deleteByPrimaryKey(Integer id);

@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.UserPermission;
+import com.igeek.admin.model.entity.UserPermission;
 
 public interface UserPermissionMapper {
     int deleteByPrimaryKey(Integer id);

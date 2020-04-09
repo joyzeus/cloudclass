@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.RolePermissionRelation;
+import com.igeek.admin.model.entity.RolePermissionRelation;
 
 public interface RolePermissionRelationMapper {
     int deleteByPrimaryKey(Integer id);

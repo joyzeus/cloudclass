@@ -1,7 +1,7 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.Users;
-import com.igeek.admin.entity.UsersKey;
+import com.igeek.admin.model.entity.Users;
+import com.igeek.admin.model.entity.UsersKey;
 
 public interface UsersMapper {
     int deleteByPrimaryKey(UsersKey key);

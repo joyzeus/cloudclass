@@ -1,7 +1,7 @@
 package com.igeek.admin.service.impl;
 
 import com.igeek.admin.dao.LoginLogMapper;
-import com.igeek.admin.entity.LoginLog;
+import com.igeek.admin.model.entity.LoginLog;
 import com.igeek.admin.service.base.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

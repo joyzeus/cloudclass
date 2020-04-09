@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.igeek.admin.dao.PermissionMapper">
-    <resultMap id="BaseResultMap" type="com.igeek.admin.entity.Permission">
+    <resultMap id="BaseResultMap" type="com.igeek.admin.model.entity.Permission">
         <id column="table_id" jdbcType="INTEGER" property="tableId"/>
         <result column="node_name" jdbcType="VARCHAR" property="nodeName"/>
         <result column="path" jdbcType="VARCHAR" property="path"/>
@@ -25,7 +25,7 @@
         delete from permission
         where table_id = #{tableId,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.igeek.admin.entity.Permission">
+    <insert id="insert" parameterType="com.igeek.admin.model.entity.Permission">
         insert into permission (table_id, node_name, path,
         parent_id, has_child, type,
         order_id, actived, deleted)
@@ -33,7 +33,7 @@
         #{parentId,jdbcType=INTEGER}, #{hasChild,jdbcType=BIT}, #{type,jdbcType=INTEGER},
         #{orderId,jdbcType=INTEGER}, #{actived,jdbcType=BIT}, #{deleted,jdbcType=BIT})
     </insert>
-    <insert id="insertSelective" parameterType="com.igeek.admin.entity.Permission">
+    <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.Permission">
         insert into permission
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="tableId != null">
@@ -94,7 +94,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.entity.Permission">
+    <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.model.entity.Permission">
         update permission
         <set>
             <if test="nodeName != null">
@@ -124,7 +124,7 @@
         </set>
         where table_id = #{tableId,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.igeek.admin.entity.Permission">
+    <update id="updateByPrimaryKey" parameterType="com.igeek.admin.model.entity.Permission">
         update permission
         set node_name = #{nodeName,jdbcType=VARCHAR},
         path = #{path,jdbcType=VARCHAR},
@@ -137,7 +137,7 @@
         where table_id = #{tableId,jdbcType=INTEGER}
     </update>
 
-    <select id="list" resultType="com.igeek.admin.entity.Permission">
+    <select id="list" resultType="com.igeek.admin.model.entity.Permission">
         select
         <include refid="Base_Column_List"/>
         from permission

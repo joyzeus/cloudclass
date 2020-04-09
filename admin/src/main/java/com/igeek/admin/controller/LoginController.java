@@ -1,9 +1,9 @@
 package com.igeek.admin.controller;
 
-import com.igeek.admin.entity.LoginLog;
-import com.igeek.admin.entity.Users;
-import com.igeek.admin.entity.bo.UserLoginBO;
-import com.igeek.admin.entity.vo.UsersVo;
+import com.igeek.admin.model.entity.LoginLog;
+import com.igeek.admin.model.entity.Users;
+import com.igeek.admin.model.entity.bo.UserLoginBO;
+import com.igeek.admin.model.entity.vo.UsersVo;
 import com.igeek.admin.service.base.SysLogService;
 import com.igeek.admin.service.base.UserTokenService;
 import com.igeek.admin.service.base.UsersService;

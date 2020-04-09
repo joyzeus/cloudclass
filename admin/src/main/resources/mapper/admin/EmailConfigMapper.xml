@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.igeek.admin.dao.EmailConfigMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.admin.entity.EmailConfig">
+  <resultMap id="BaseResultMap" type="com.igeek.admin.model.entity.EmailConfig">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="account" jdbcType="VARCHAR" property="account" />
@@ -26,7 +26,7 @@
     delete from email_config
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.admin.entity.EmailConfig">
+  <insert id="insert" parameterType="com.igeek.admin.model.entity.EmailConfig">
     insert into email_config (table_id, user_id, account, 
       account_type, email_type, enable, 
       creat_time, update_time, update_user_id
@@ -36,7 +36,7 @@
       #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.admin.entity.EmailConfig">
+  <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.EmailConfig">
     insert into email_config
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.entity.EmailConfig">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.model.entity.EmailConfig">
     update email_config
     <set>
       <if test="userId != null">
@@ -127,7 +127,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.entity.EmailConfig">
+  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.model.entity.EmailConfig">
     update email_config
     set user_id = #{userId,jdbcType=INTEGER},
       account = #{account,jdbcType=VARCHAR},
@@ -140,7 +140,7 @@
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
 
-  <select id="list" resultType="com.igeek.admin.entity.EmailConfig">
+  <select id="list" resultType="com.igeek.admin.model.entity.EmailConfig">
     select <include refid="Base_Column_List"></include>
     from email_config
     <where>

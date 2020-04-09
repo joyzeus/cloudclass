@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.igeek.admin.dao.ErrorLogMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.admin.entity.ErrorLog">
+  <resultMap id="BaseResultMap" type="com.igeek.admin.model.entity.ErrorLog">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.admin.entity.ErrorLog">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.admin.model.entity.ErrorLog">
     <result column="message" jdbcType="LONGVARCHAR" property="message" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -28,13 +28,13 @@
     delete from error_log
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.admin.entity.ErrorLog">
+  <insert id="insert" parameterType="com.igeek.admin.model.entity.ErrorLog">
     insert into error_log (id, create_time, type, 
       url, message)
     values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, 
       #{url,jdbcType=VARCHAR}, #{message,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.admin.entity.ErrorLog">
+  <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.ErrorLog">
     insert into error_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.entity.ErrorLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.admin.model.entity.ErrorLog">
     update error_log
     <set>
       <if test="createTime != null">
@@ -89,7 +89,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.igeek.admin.entity.ErrorLog">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.igeek.admin.model.entity.ErrorLog">
     update error_log
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=INTEGER},
@@ -97,7 +97,7 @@
       message = #{message,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.entity.ErrorLog">
+  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.model.entity.ErrorLog">
     update error_log
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=INTEGER},

@@ -1,6 +1,6 @@
 package com.igeek.admin.service.base;
 
-import com.igeek.admin.entity.Users;
+import com.igeek.admin.model.entity.Users;
 
 public interface UsersService {
 

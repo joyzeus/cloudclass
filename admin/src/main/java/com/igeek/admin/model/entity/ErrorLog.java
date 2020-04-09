@@ -1,4 +1,4 @@
-package com.igeek.admin.entity;
+package com.igeek.admin.model.entity;
 
 import lombok.Data;
 

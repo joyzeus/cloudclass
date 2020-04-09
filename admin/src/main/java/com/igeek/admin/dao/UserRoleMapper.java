@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.UserRole;
+import com.igeek.admin.model.entity.UserRole;
 
 public interface UserRoleMapper {
     int deleteByPrimaryKey(Integer id);

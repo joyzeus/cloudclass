@@ -1,6 +1,6 @@
 package com.igeek.admin.dao;
 
-import com.igeek.admin.entity.WebLog;
+import com.igeek.admin.model.entity.WebLog;
 
 public interface WebLogMapper {
     int deleteByPrimaryKey(Integer id);

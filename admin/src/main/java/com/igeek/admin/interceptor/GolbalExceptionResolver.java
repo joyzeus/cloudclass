@@ -1,7 +1,7 @@
 //package com.igeek.admin.interceptor;
 //
-//import com.igeek.admin.entity.EmailConfig;
-//import com.igeek.admin.entity.ExceptionLog;
+//import com.igeek.admin.model.entity.EmailConfig;
+//import com.igeek.admin.model.entity.ExceptionLog;
 //import com.igeek.admin.service.base.EmailConfigService;
 //import com.igeek.admin.service.base.ExceptionLogService;
 //import com.igeek.admin.service.base.MailService;

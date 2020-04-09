@@ -1,6 +1,6 @@
 package com.igeek.admin.service.base;
 
-import com.igeek.admin.entity.ExceptionLog;
+import com.igeek.admin.model.entity.ExceptionLog;
 
 import java.util.List;
 
