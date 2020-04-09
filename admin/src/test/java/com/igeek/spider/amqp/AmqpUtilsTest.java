@@ -1,7 +1,7 @@
-package com.jay.book.amqp;
+package com.igeek.spider.amqp;
 
 
-import com.jay.book.ApplicationTests;
+import com.igeek.spider.ApplicationTests;
 import com.igeek.admin.amqp.AmqpUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
