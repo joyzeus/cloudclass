@@ -31,6 +31,7 @@ import java.util.Date;
 /**
  * @author zhouxu
  * @date 2019/12/24
+ * @email 1419982188@qq.com
  */
 @RestController
 @RequestMapping("/user")
@@ -43,7 +44,6 @@ public class LoginController extends BaseContorller {
     private final VerificationCodeService verificationCodeService;
 
     private final SysLogService sysLogService;
-
 
     @Autowired(required = false)
     public LoginController(UsersService userService, UserTokenService userTokenService,
