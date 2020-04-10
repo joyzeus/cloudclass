@@ -76,3 +76,4 @@ logging:
 token:
   secret: YjUyOTNhYzE5ZWNmNDJmZmE4YWJjZDY3NjkxMjM4ZmU=
   expiration: 604800
+  tokenHead: "Bearer "
