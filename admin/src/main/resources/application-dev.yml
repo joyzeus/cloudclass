@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/admin?useUnicode=true&characterEncoding=UTF-8&useSSL=true&&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: 123456zx.
     driverClassName: com.mysql.cj.jdbc.Driver
     #最大活跃数
     maxActive: 20
@@ -24,7 +24,6 @@ spring:
     timeBetweenEvictionRunsMillis: 60000
     minEvictableIdleTimeMillis: 300000
     validationQuery: select 1
-
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
@@ -63,7 +62,7 @@ spring:
 mybatis:
   mapper-locations:
     - classpath:mapper/**/*.xml
-  type-aliases-package: com.jay.book.module.*.dao
+  type-aliases-package: com.igeek.admin.dao
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
@@ -72,8 +71,8 @@ mybatis:
 logging:
   config: classpath:logback-spring.xml
   level:
-    com.zhongye.manager.module.*.dao: debug
+    com.igeek.admin.dao: debug
 
 token:
-  secret: secret
+  secret: YjUyOTNhYzE5ZWNmNDJmZmE4YWJjZDY3NjkxMjM4ZmU=
   expiration: 604800

@@ -1,4 +1,4 @@
-package com.igeek.admin.model.entity.vo;
+package com.igeek.admin.model.vo;
 
 import lombok.Data;
 
@@ -13,7 +13,6 @@ public class UsersVo implements Serializable {
 
     Long code;
     String message;
-    Integer userId;
     String accout;
     String token;
 }

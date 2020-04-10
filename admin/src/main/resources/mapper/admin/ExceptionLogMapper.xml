@@ -34,7 +34,8 @@
     from exception_log
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from exception_log
     where id = #{id,jdbcType=INTEGER}
   </delete>
@@ -219,4 +220,8 @@
       resolve_userid = #{resolveUserid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getList" resultType="com.igeek.admin.model.entity.ExceptionLog">
+    select <include refid="Base_Column_List"></include>
+    from exception_log
+  </select>
 </mapper>

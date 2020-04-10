@@ -6,6 +6,11 @@ import com.igeek.admin.service.base.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author zhoxu
+ * @date 2020/04/10
+ * @email 1419982188@qq.com
+ */
 @Service
 public class UsersServiceImpl implements UsersService {
 
@@ -13,14 +18,27 @@ public class UsersServiceImpl implements UsersService {
     private UsersMapper usersMapper;
 
     @Override
+    public Users findUsers(String account) {
+        return usersMapper.findUsers(account);
+    }
+
+    @Override
     public Users selectByAccount(String account) {
-        return usersMapper.find(Users.Builder.anUsers().withAccount(account).build());
+        Users users = Users.builder().build();
+        users.setAccount(account);
+        return usersMapper.find(users);
     }
 
     @Override
     public Integer save(Users user) {
-        Users select = usersMapper.find(Users.Builder.anUsers().withAccount(user.getAccount()).build());
-        Users anOther = usersMapper.find(Users.Builder.anUsers().withMobile(user.getMobile()).build());
+        Users users = Users.builder().build();
+        users.setAccount(user.getAccount());
+        Users select = usersMapper.find(users);
+
+        users.setAccount(null);
+        users.setMobile(user.getMobile());
+        Users anOther = usersMapper.find(users);
+
         if (select == null && anOther == null) {
             return usersMapper.insertSelective(user);
         } else {
@@ -29,7 +47,9 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Users selectByUserId(Integer userId) {
-        return usersMapper.find(Users.Builder.anUsers().withId(userId).build());
+    public Users selectByUserId(Long userId) {
+        Users build = Users.builder().build();
+        build.setId(userId);
+        return usersMapper.find(build);
     }
 }

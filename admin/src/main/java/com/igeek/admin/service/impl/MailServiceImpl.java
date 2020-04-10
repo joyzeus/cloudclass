@@ -79,7 +79,6 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-
     /**
      * 发送带附件的邮件
      *
@@ -88,6 +87,7 @@ public class MailServiceImpl implements MailService {
      * @param content
      * @param filePath
      */
+    @Override
     public void sendAttachmentsMail(String title, String content, String filePath, String[] toAddr) {
         MimeMessage message = mailSender.createMimeMessage();
 
@@ -121,6 +121,7 @@ public class MailServiceImpl implements MailService {
      * @param rscPath
      * @param rscId
      */
+    @Override
     public void sendInlineResourceMail(String title, String content, String rscPath, String rscId, String[] toAddr) {
         MimeMessage message = mailSender.createMimeMessage();
 

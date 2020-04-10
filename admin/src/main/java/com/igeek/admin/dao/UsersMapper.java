@@ -13,4 +13,6 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     Users find(Users users);
+
+    Users findUsers(String account);
 }

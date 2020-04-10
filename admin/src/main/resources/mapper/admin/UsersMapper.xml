@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.igeek.admin.dao.UsersMapper">
     <resultMap id="BaseResultMap" type="com.igeek.admin.model.entity.Users">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <id column="account" jdbcType="VARCHAR" property="account"/>
-        <id column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
@@ -160,55 +160,60 @@
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
-        and account = #{account,jdbcType=VARCHAR}
-        and mobile = #{mobile,jdbcType=VARCHAR}
     </update>
-    <select id="find" resultType="com.igeek.admin.model.entity.Users">
-      select <include refid="Base_Column_List"></include>
-      from users
-      <where>
-        <if test="id != null">
-          and id = #{id,jdbcType=INTEGER}
-        </if>
-        <if test="account != null">
-          and account = #{account,jdbcType=VARCHAR}
-        </if>
-        <if test="mobile != null">
-          and mobile = #{mobile,jdbcType=VARCHAR}
-        </if>
-        <if test="email != null">
-          and email = #{email,jdbcType=VARCHAR}
-        </if>
-        <if test="password != null">
-          and password = #{password,jdbcType=VARCHAR}
-        </if>
-        <if test="nickname != null">
-          and nickname = #{nickname,jdbcType=VARCHAR}
-        </if>
-        <if test="sex != null">
-          and sex = #{sex,jdbcType=VARCHAR}
-        </if>
-        <if test="headImage != null">
-          and head_image = #{headImage,jdbcType=VARCHAR}
-        </if>
-        <if test="createTime != null">
-          and create_time = #{createTime,jdbcType=TIMESTAMP}
-        </if>
-        <if test="updateTime != null">
-          and update_time = #{updateTime,jdbcType=TIMESTAMP}
-        </if>
-        <if test="lastLoginTime != null">
-          and last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
-        </if>
-        <if test="loginCount != null">
-          and login_count = #{loginCount,jdbcType=INTEGER}
-        </if>
-        <if test="locked != null">
-          and locked = #{locked,jdbcType=BIT}
-        </if>
-        <if test="login != null">
-          and login = #{login,jdbcType=BIT}
-        </if>
-      </where>
+    <select id="find"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from users
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="account != null">
+                and account = #{account,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile != null">
+                and mobile = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="email != null">
+                and email = #{email,jdbcType=VARCHAR}
+            </if>
+            <if test="password != null">
+                and password = #{password,jdbcType=VARCHAR}
+            </if>
+            <if test="nickname != null">
+                and nickname = #{nickname,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="headImage != null">
+                and head_image = #{headImage,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="lastLoginTime != null">
+                and last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="loginCount != null">
+                and login_count = #{loginCount,jdbcType=INTEGER}
+            </if>
+            <if test="locked != null">
+                and locked = #{locked,jdbcType=BIT}
+            </if>
+            <if test="login != null">
+                and login = #{login,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+    <select id="findUsers" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from users
+        where account = #{account} or mobile = #{account} or email = #{account}
     </select>
 </mapper>

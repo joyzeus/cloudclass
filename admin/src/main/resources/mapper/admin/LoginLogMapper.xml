@@ -15,10 +15,11 @@
     <result column="message" jdbcType="VARCHAR" property="message" />
     <result column="login_success" jdbcType="INTEGER" property="loginSuccess" />
     <result column="spend_time" jdbcType="BIGINT" property="spendTime" />
+    <result column="request_params" jdbcType="VARCHAR" property="requestParams" />
   </resultMap>
   <sql id="Base_Column_List">
     id, user_id, account, create_time, ip, location, device_type, agent_type, karnel_version, 
-    useragent, message, login_success, spend_time
+    useragent, message, login_success, spend_time,request_params
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -30,18 +31,6 @@
     delete from login_log
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.admin.model.entity.LoginLog">
-    insert into login_log (id, user_id, account, 
-      create_time, ip, location, 
-      device_type, agent_type, karnel_version, 
-      useragent, message, login_success, 
-      spend_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
-      #{deviceType,jdbcType=VARCHAR}, #{agentType,jdbcType=VARCHAR}, #{karnelVersion,jdbcType=VARCHAR}, 
-      #{useragent,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{loginSuccess,jdbcType=INTEGER}, 
-      #{spendTime,jdbcType=BIGINT})
-  </insert>
   <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.LoginLog">
     insert into login_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -84,6 +73,9 @@
       <if test="spendTime != null">
         spend_time,
       </if>
+      <if test="requestParams != null">
+        request_params,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -124,6 +116,9 @@
       </if>
       <if test="spendTime != null">
         #{spendTime,jdbcType=BIGINT},
+      </if>
+      <if test="requestParams != null">
+        #{requestParams,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,23 +161,10 @@
       <if test="spendTime != null">
         spend_time = #{spendTime,jdbcType=BIGINT},
       </if>
+      <if test="requestParams != null">
+        request_params = #{requestParams,jdbcType=VARCHAR},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.admin.model.entity.LoginLog">
-    update login_log
-    set user_id = #{userId,jdbcType=INTEGER},
-      account = #{account,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      ip = #{ip,jdbcType=VARCHAR},
-      location = #{location,jdbcType=VARCHAR},
-      device_type = #{deviceType,jdbcType=VARCHAR},
-      agent_type = #{agentType,jdbcType=VARCHAR},
-      karnel_version = #{karnelVersion,jdbcType=VARCHAR},
-      useragent = #{useragent,jdbcType=VARCHAR},
-      message = #{message,jdbcType=VARCHAR},
-      login_success = #{loginSuccess,jdbcType=INTEGER},
-      spend_time = #{spendTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

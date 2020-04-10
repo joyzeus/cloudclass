@@ -4,11 +4,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author zhouxu
+ * @email 1419982188@qq.com
+ * @date 2020/04/10
+ */
 @Data
 public class UsersKey implements Serializable {
-    private Integer id;
 
-    private String account;
-
-    private String mobile;
 }

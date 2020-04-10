@@ -2,6 +2,8 @@ package com.igeek.admin.dao;
 
 import com.igeek.admin.model.entity.ExceptionLog;
 
+import java.util.List;
+
 public interface ExceptionLogMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +18,6 @@ public interface ExceptionLogMapper {
     int updateByPrimaryKeyWithBLOBs(ExceptionLog record);
 
     int updateByPrimaryKey(ExceptionLog record);
+
+    List<ExceptionLog> getList();
 }

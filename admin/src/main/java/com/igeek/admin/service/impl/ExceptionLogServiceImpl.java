@@ -21,6 +21,6 @@ public class ExceptionLogServiceImpl implements ExceptionLogService {
 
     @Override
     public List<ExceptionLog> selectExceptionList() {
-        return null;
+        return exceptionLogMapper.getList();
     }
 }

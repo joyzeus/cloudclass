@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class ErrorLog implements Serializable {
+public class  ErrorLog implements Serializable {
     private Integer id;
 
     private Date createTime;
