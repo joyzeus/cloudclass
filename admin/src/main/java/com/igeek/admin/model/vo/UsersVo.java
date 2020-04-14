@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class UsersVo implements Serializable {
 
-    Long code;
+    Integer code;
     String message;
     String accout;
     String token;

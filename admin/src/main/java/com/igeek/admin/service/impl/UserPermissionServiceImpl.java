@@ -17,6 +17,7 @@ public class UserPermissionServiceImpl implements UserPermissionService {
     @Autowired(required = false)
     private MenuManageService menuManageService;
 
+    @Override
     public List<UserPermissionVO> getTopSystem(Integer userId) {
         return null;
     }
