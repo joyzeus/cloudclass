@@ -1,6 +1,5 @@
 package com.igeek.admin.service.impl;
 
-import com.igeek.admin.config.jwt.JWTUtils;
 import com.igeek.admin.config.redis.RedisUtil;
 import com.igeek.admin.constant.RedisKeyEnum;
 import com.igeek.admin.service.base.UserTokenService;
@@ -20,14 +19,12 @@ public class UserTokenServiceImpl implements UserTokenService {
     @Autowired
     private RedisUtil redisUtil;
 
-    @Autowired
-    private JWTUtils jwtUtils;
-
     @Override
     public String createSaveToken(Long userId) {
-        String token = jwtUtils.createToken(userId, DEFAULT_EXPIRE_TIME);
-        redisUtil.set(RedisKeyEnum.TOKEN.getKey() + userId, token, DEFAULT_EXPIRE_TIME);
-        return token;
+//        String token = jwtUtils.createToken(userId, DEFAULT_EXPIRE_TIME);
+//        redisUtil.set(RedisKeyEnum.TOKEN.getKey() + userId, token, DEFAULT_EXPIRE_TIME);
+//        return token;
+        return null;
     }
 
     @Override
