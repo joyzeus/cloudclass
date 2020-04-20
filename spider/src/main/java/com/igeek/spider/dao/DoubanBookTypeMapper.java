@@ -18,4 +18,6 @@ public interface DoubanBookTypeMapper {
     int updateByPrimaryKey(DoubanBookType record);
 
     List<DoubanBookType> find(DoubanBookType record);
+
+    DoubanBookType selectByType(String name);
 }

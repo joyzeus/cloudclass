@@ -1,14 +1,13 @@
 package com.igeek.admin.dao;
 
 import com.igeek.admin.model.entity.Users;
-import com.igeek.admin.model.entity.UsersKey;
 
 public interface UsersMapper {
-    int deleteByPrimaryKey(UsersKey key);
+    int deleteByPrimaryKey(Long key);
 
     int insertSelective(Users record);
 
-    Users selectByPrimaryKey(UsersKey key);
+    Users selectByPrimaryKey(Long key);
 
     int updateByPrimaryKeySelective(Users record);
 

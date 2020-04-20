@@ -4,10 +4,15 @@ import com.igeek.spider.dao.DoubanBookMapper;
 import com.igeek.spider.dao.DoubanBookTypeMapper;
 import com.igeek.spider.model.entity.DoubanBook;
 import com.igeek.spider.model.entity.DoubanBookType;
+import com.igeek.spider.repository.EsBookRepository;
 import com.igeek.spider.service.base.DoubanBookService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +27,9 @@ public class DoubanBookServiceImpl implements DoubanBookService {
 
     @Autowired(required = false)
     private DoubanBookMapper doubanBookMapper;
+
+    @Autowired
+    private EsBookRepository bookRepository;
 
     @Override
     public Integer insertOrUpdateBookType(DoubanBookType doubanBookType) {
@@ -68,5 +76,19 @@ public class DoubanBookServiceImpl implements DoubanBookService {
             }
         }
         return result;
+    }
+
+    @Override
+    public DoubanBookType selectByName(String name) {
+        return doubanBookTypeMapper.selectByType(name);
+    }
+
+    @Override
+    public Page<DoubanBook> list(Integer pageNum, Integer pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNum, pageSize);
+        NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
+        nativeSearchQueryBuilder.withPageable(pageRequest);
+        NativeSearchQuery nativeSearchQuery = nativeSearchQueryBuilder.build();
+        return bookRepository.search(nativeSearchQuery);
     }
 }

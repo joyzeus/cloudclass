@@ -10,6 +10,10 @@ public class R extends HashMap<String, Object> {
         return new R().setCode(HttpCode.OK.getCode()).setMessage(HttpCode.OK.getDesc());
     }
 
+    public static R ok(String message) {
+        return new R().setCode(HttpCode.OK.getCode()).setMessage(message);
+    }
+
     public static R success(Object object) {
         return R.ok().put("data", object);
     }

@@ -1,6 +1,7 @@
 package com.igeek.admin.service.impl;
 
 import com.igeek.admin.dao.UserPermissionMapper;
+import com.igeek.admin.model.entity.RolePermissionRelation;
 import com.igeek.admin.model.entity.vo.UserPermissionVO;
 import com.igeek.admin.service.base.MenuManageService;
 import com.igeek.admin.service.base.UserPermissionService;
@@ -19,6 +20,11 @@ public class UserPermissionServiceImpl implements UserPermissionService {
 
     @Override
     public List<UserPermissionVO> getTopSystem(Integer userId) {
+        return null;
+    }
+
+    @Override
+    public List<RolePermissionRelation> getAllMenusWithRole() {
         return null;
     }
 }

@@ -21,13 +21,13 @@
         id, account, mobile, email, password, nickname, sex, head_image, create_time, update_time,
         last_login_time, login_count, locked, login
     </sql>
-    <select id="selectByPrimaryKey" parameterType="com.igeek.admin.model.entity.UsersKey" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from users
         where id = #{id,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="com.igeek.admin.model.entity.UsersKey">
+    <delete id="deleteByPrimaryKey" parameterType="integer">
         delete from users
         where id = #{id,jdbcType=INTEGER}
     </delete>

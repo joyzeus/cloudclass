@@ -35,6 +35,9 @@
             </if>
         </where>
     </select>
+    <select id="selectByType" resultType="com.igeek.spider.model.entity.DoubanBookType">
+        select * from douban_book_type where type = #{name}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from douban_book_type
         where table_id = #{tableId,jdbcType=INTEGER}

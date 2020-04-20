@@ -2,8 +2,8 @@ package com.igeek.admin.model.entity;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,9 +12,8 @@ import java.util.Date;
  * @date 2020/04/10
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Builder(toBuilder = true)
-public class Users extends UsersKey {
+public class Users implements Serializable {
 
     private Long id;
 

@@ -13,7 +13,9 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Selectable;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +56,29 @@ public class DoubanBookSpider implements PageProcessor {
                         .count(StringUtils.isEmpty(count) ? 0 : Integer.parseInt(count))
                         .build());
 
-                Spider.create(this).addUrl(HOST + "/tag/" + URLEncoder.encode(typeName)).thread(1).run();
+                try {
+                    Spider.create(this).addUrl(HOST + "/tag/" + URLEncoder.encode(typeName,"utf-8")).thread(1).run();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
             }
         } else if (url.toString().startsWith("https://book.douban.com/tag/")) {
+            Integer typeId = 0;
+            int lastIndex = url.toString().indexOf("?");
+            String type = lastIndex == -1 ? url.toString().substring("https://book.douban.com/tag/".length())
+                    : url.toString().substring("https://book.douban.com/tag/".length(), lastIndex);
+            if (StringUtils.isNotBlank(type)) {
+                DoubanBookType doubanBookType = null;
+                try {
+                    doubanBookType = doubanBookService.selectByName(URLDecoder.decode(type, "utf-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                if (doubanBookType != null) {
+                    typeId = doubanBookType.getTableId();
+                }
+            }
+
             List<Selectable> nodes = page.getHtml().xpath("//ul[@class='subject-list']/li").nodes();
             for (Selectable node : nodes) {
                 String link = node.xpath("//div[@class='pic']/a/@href").get();
@@ -73,6 +95,7 @@ public class DoubanBookSpider implements PageProcessor {
                     DoubanBook book = DoubanBook.builder()
                             .bookId(bookId)
                             .bookName(name)
+                            .typeId(typeId)
                             .link(link)
                             .author(split[0].trim())
                             .img(img)
@@ -87,6 +110,7 @@ public class DoubanBookSpider implements PageProcessor {
                     DoubanBook book = DoubanBook.builder()
                             .bookId(bookId)
                             .bookName(name)
+                            .typeId(typeId)
                             .link(link)
                             .author(split[0].trim())
                             .translator(split[1].trim())
