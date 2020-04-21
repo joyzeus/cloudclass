@@ -28,8 +28,10 @@ public class BookController {
     }
 
     @GetMapping("/list")
-    public R getList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
+    public R getList(@RequestParam(required = false) String keyword,
+                     @RequestParam(required = false, defaultValue = "0") Integer sortAction,
+                     @RequestParam(required = false, defaultValue = "1") Integer pageNum,
                      @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
-        return R.success(doubanBookService.list(pageNum, pageSize));
+        return R.success(doubanBookService.list(keyword, pageNum, pageSize, sortAction));
     }
 }

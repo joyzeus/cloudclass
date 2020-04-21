@@ -8,6 +8,12 @@ import com.igeek.spider.repository.EsBookRepository;
 import com.igeek.spider.service.base.DoubanBookService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,8 +22,14 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author zhouxu
+ * @date 2020/04/20
+ * @email 1419982188@qq.com
+ */
 @Service
 @Transactional
 public class DoubanBookServiceImpl implements DoubanBookService {
@@ -84,10 +96,43 @@ public class DoubanBookServiceImpl implements DoubanBookService {
     }
 
     @Override
-    public Page<DoubanBook> list(Integer pageNum, Integer pageSize) {
+    public Page<DoubanBook> list(String keyword, Integer pageNum, Integer pageSize, Integer sortAction) {
         PageRequest pageRequest = PageRequest.of(pageNum, pageSize);
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
         nativeSearchQueryBuilder.withPageable(pageRequest);
+
+        if (StringUtils.isBlank(keyword)) {
+            nativeSearchQueryBuilder.withFilter(QueryBuilders.matchAllQuery());
+        } else {
+            List<FunctionScoreQueryBuilder.FilterFunctionBuilder> filterFunctionBuilders = new ArrayList<>();
+            filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("bookName", keyword),
+                    ScoreFunctionBuilders.weightFactorFunction(10)));
+            filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("author", keyword),
+                    ScoreFunctionBuilders.weightFactorFunction(5)));
+            filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("publishingHouse", keyword),
+                    ScoreFunctionBuilders.weightFactorFunction(3)));
+            filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("translator", keyword),
+                    ScoreFunctionBuilders.weightFactorFunction(2)));
+            FunctionScoreQueryBuilder.FilterFunctionBuilder[] builders = new FunctionScoreQueryBuilder.FilterFunctionBuilder[filterFunctionBuilders.size()];
+            filterFunctionBuilders.toArray(builders);
+            FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(builders)
+                    .scoreMode(FunctionScoreQuery.ScoreMode.SUM)
+                    .setMinScore(2);
+            nativeSearchQueryBuilder.withQuery(functionScoreQueryBuilder);
+        }
+
+        //排序
+        if (sortAction == 1) {
+            //发行时间
+            nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort("publishTime").order(SortOrder.DESC));
+        } else if (sortAction == 2) {
+            //评分
+            nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort("score").order(SortOrder.DESC));
+        } else {
+            //按相关度
+            nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));
+        }
+
         NativeSearchQuery nativeSearchQuery = nativeSearchQueryBuilder.build();
         return bookRepository.search(nativeSearchQuery);
     }

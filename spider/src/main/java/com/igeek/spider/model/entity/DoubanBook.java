@@ -1,8 +1,5 @@
 package com.igeek.spider.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -15,7 +12,6 @@ import java.util.Date;
 @Data
 @Builder(toBuilder = true)
 @Document(indexName = "books", type = "_doc", shards = 1, replicas = 0)
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class DoubanBook implements Serializable {
 
     public DoubanBook() {
@@ -38,43 +34,21 @@ public class DoubanBook implements Serializable {
     }
 
     @Id
-//    @Field(name = "table_id")
-    @JsonProperty("table_id")
     private Integer tableId;
-    //    @Field(name = "book_id")
-    @JsonProperty("book_id")
     private Integer bookId;
-    //    @Field(name = "book_name")
-    @JsonProperty("book_name")
+    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
     private String bookName;
-    //    @Field(name = "type_id")
-    @JsonProperty("type_id")
     private Integer typeId;
-    //    @Field(name = "author")
-    @JsonProperty("author")
+    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
     private String author;
-    //    @Field(name = "translator")
-    @JsonProperty("translator")
+    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
     private String translator;
-    //    @Field(name = "publishing_house")
-    @JsonProperty("publishing_house")
+    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
     private String publishingHouse;
-    //    @Field(name = "publish_time")
-    @JsonProperty("publish_time")
     private Date publishTime;
-    //    @Field(name = "price")
-    @JsonProperty("price")
     private BigDecimal price;
-    //    @Field(name = "score")
-    @JsonProperty("score")
     private BigDecimal score;
-    //    @Field(name = "rate_count")
-    @JsonProperty("rate_count")
     private Integer rateCount;
-    //    @Field(name = "link")
-    @JsonProperty("link")
     private String link;
-    //    @Field(name = "img")
-    @JsonProperty("img")
     private String img;
 }

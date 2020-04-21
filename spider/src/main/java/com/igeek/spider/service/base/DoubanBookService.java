@@ -12,5 +12,5 @@ public interface DoubanBookService {
 
     DoubanBookType selectByName(String name);
 
-    Page<DoubanBook> list(Integer pageNum, Integer pageSize);
+    Page<DoubanBook> list(String keyword, Integer pageNum, Integer pageSize, Integer sortAction);
 }
