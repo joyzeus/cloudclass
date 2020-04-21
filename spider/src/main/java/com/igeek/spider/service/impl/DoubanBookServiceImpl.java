@@ -97,7 +97,7 @@ public class DoubanBookServiceImpl implements DoubanBookService {
 
     @Override
     public Page<DoubanBook> list(String keyword, Integer pageNum, Integer pageSize, Integer sortAction) {
-        PageRequest pageRequest = PageRequest.of(pageNum, pageSize);
+        PageRequest pageRequest = PageRequest.of(pageNum - 1, pageSize);
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
         nativeSearchQueryBuilder.withPageable(pageRequest);
 
