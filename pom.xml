@@ -14,7 +14,7 @@
         <module>spider</module>
         <module>admin</module>
         <module>user</module>
-        <module>book</module>
+        <module>crm</module>
     </modules>
 
     <parent>
