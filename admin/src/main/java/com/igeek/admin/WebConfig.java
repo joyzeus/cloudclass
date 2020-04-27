@@ -20,11 +20,11 @@ public class WebConfig extends WebMvcConfigurationSupport {
         registry.addInterceptor(new ApiInterceptor());
     }
 
-    @Override
-    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
-        RequestMappingHandlerMapping handlerMapping = new CustomRequestMappingHandlerMapping();
-        handlerMapping.setOrder(0);
-        handlerMapping.setInterceptors(getInterceptors());
-        return handlerMapping;
-    }
+//    @Override
+//    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+//        RequestMappingHandlerMapping handlerMapping = new CustomRequestMappingHandlerMapping();
+//        handlerMapping.setOrder(0);
+//        handlerMapping.setInterceptors(getInterceptors());
+//        return handlerMapping;
+//    }
 }

@@ -84,7 +84,6 @@ public class CsdnMineSpider implements PageProcessor {
     public static void main(String[] args) {
         Spider.create(new CsdnMineSpider())
                 .addUrl("http://my.csdn.net/wgyscsf").thread(1)// 便于测试，只开一个线程，正常爬起来，可以开15不成问题。
-                .pipeline(null)
                 .run();
     }
 }

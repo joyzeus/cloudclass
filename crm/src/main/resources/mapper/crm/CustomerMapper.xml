@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeek.crm.dao.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.igeek.crm.model.entity.Customer">
+    <id column="table_id" jdbcType="INTEGER" property="tableId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="classes" jdbcType="INTEGER" property="classes" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="dept" jdbcType="INTEGER" property="dept" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="promote_type_id" jdbcType="INTEGER" property="promoteTypeId" />
+    <result column="promote_id" jdbcType="INTEGER" property="promoteId" />
+    <result column="origin_url" jdbcType="VARCHAR" property="originUrl" />
+    <result column="track_user_id" jdbcType="INTEGER" property="trackUserId" />
+    <result column="track_allocation_time" jdbcType="TIMESTAMP" property="trackAllocationTime" />
+    <result column="track_allocation_type" jdbcType="INTEGER" property="trackAllocationType" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    table_id, mobile, classes, user_id, dept, status, promote_type_id, promote_id, origin_url, 
+    track_user_id, track_allocation_time, track_allocation_type, create_user_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.igeek.crm.model.entity.Customer">
+    insert into customer (table_id, mobile, classes, 
+      user_id, dept, status, 
+      promote_type_id, promote_id, origin_url, 
+      track_user_id, track_allocation_time, track_allocation_type, 
+      create_user_id, create_time)
+    values (#{tableId,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, #{classes,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{dept,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{promoteTypeId,jdbcType=INTEGER}, #{promoteId,jdbcType=INTEGER}, #{originUrl,jdbcType=VARCHAR}, 
+      #{trackUserId,jdbcType=INTEGER}, #{trackAllocationTime,jdbcType=TIMESTAMP}, #{trackAllocationType,jdbcType=INTEGER}, 
+      #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.crm.model.entity.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        table_id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="classes != null">
+        classes,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="promoteTypeId != null">
+        promote_type_id,
+      </if>
+      <if test="promoteId != null">
+        promote_id,
+      </if>
+      <if test="originUrl != null">
+        origin_url,
+      </if>
+      <if test="trackUserId != null">
+        track_user_id,
+      </if>
+      <if test="trackAllocationTime != null">
+        track_allocation_time,
+      </if>
+      <if test="trackAllocationType != null">
+        track_allocation_type,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        #{classes,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="promoteTypeId != null">
+        #{promoteTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="promoteId != null">
+        #{promoteId,jdbcType=INTEGER},
+      </if>
+      <if test="originUrl != null">
+        #{originUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="trackUserId != null">
+        #{trackUserId,jdbcType=INTEGER},
+      </if>
+      <if test="trackAllocationTime != null">
+        #{trackAllocationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trackAllocationType != null">
+        #{trackAllocationType,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.crm.model.entity.Customer">
+    update customer
+    <set>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        classes = #{classes,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="promoteTypeId != null">
+        promote_type_id = #{promoteTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="promoteId != null">
+        promote_id = #{promoteId,jdbcType=INTEGER},
+      </if>
+      <if test="originUrl != null">
+        origin_url = #{originUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="trackUserId != null">
+        track_user_id = #{trackUserId,jdbcType=INTEGER},
+      </if>
+      <if test="trackAllocationTime != null">
+        track_allocation_time = #{trackAllocationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trackAllocationType != null">
+        track_allocation_type = #{trackAllocationType,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.crm.model.entity.Customer">
+    update customer
+    set mobile = #{mobile,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      dept = #{dept,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      promote_type_id = #{promoteTypeId,jdbcType=INTEGER},
+      promote_id = #{promoteId,jdbcType=INTEGER},
+      origin_url = #{originUrl,jdbcType=VARCHAR},
+      track_user_id = #{trackUserId,jdbcType=INTEGER},
+      track_allocation_time = #{trackAllocationTime,jdbcType=TIMESTAMP},
+      track_allocation_type = #{trackAllocationType,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+</mapper>
