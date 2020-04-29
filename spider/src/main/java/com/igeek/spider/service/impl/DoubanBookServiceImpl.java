@@ -70,6 +70,11 @@ public class DoubanBookServiceImpl implements DoubanBookService {
     }
 
     @Override
+    public DoubanBookType selectByTypeName(String name) {
+        return doubanBookTypeMapper.selectByType(name);
+    }
+
+    @Override
     public Integer insertOrUpdateBook(DoubanBook doubanBook) {
         if (doubanBook == null || doubanBook.getBookId() == null) {
             return 0;
@@ -87,12 +92,22 @@ public class DoubanBookServiceImpl implements DoubanBookService {
                 result = doubanBookMapper.updateByPrimaryKeySelective(doubanBook);
             }
         }
+
+        bookRepository.save(doubanBook);
+
         return result;
     }
 
     @Override
-    public DoubanBookType selectByName(String name) {
-        return doubanBookTypeMapper.selectByType(name);
+    public Integer deleteByPrimaryKey(Integer tableId) {
+        int count = doubanBookMapper.deleteByPrimaryKey(tableId);
+        bookRepository.deleteById(tableId);
+        return count;
+    }
+
+    @Override
+    public void deleteESAll() {
+        bookRepository.deleteAll();
     }
 
     @Override

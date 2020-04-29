@@ -70,7 +70,7 @@ public class DoubanBookSpider implements PageProcessor {
             if (StringUtils.isNotBlank(type)) {
                 DoubanBookType doubanBookType = null;
                 try {
-                    doubanBookType = doubanBookService.selectByName(URLDecoder.decode(type, "utf-8"));
+                    doubanBookType = doubanBookService.selectByTypeName(URLDecoder.decode(type, "utf-8"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

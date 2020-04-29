@@ -75,6 +75,10 @@
     delete from douban_book
     where table_id = #{tableId,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByBookName">
+    delete from douban_book
+    where book_name = #{bookName}
+  </delete>
   <insert id="insert" parameterType="com.igeek.spider.model.entity.DoubanBook">
     insert into douban_book (table_id, book_id, book_name, 
       type_id, author, translator, 
@@ -87,7 +91,8 @@
       #{score,jdbcType=DECIMAL}, #{rateCount,jdbcType=INTEGER}, #{link,jdbcType=VARCHAR}, 
       #{img,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.spider.model.entity.DoubanBook">
+  <insert id="insertSelective" parameterType="com.igeek.spider.model.entity.DoubanBook"
+          useGeneratedKeys="true" keyProperty="tableId">
     insert into douban_book
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableId != null">

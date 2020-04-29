@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,7 +13,7 @@ import java.util.Date;
 
 @Data
 @Builder(toBuilder = true)
-@Document(indexName = "books", type = "_doc", shards = 1, replicas = 0)
+@Document(indexName = "book", type = "_doc", shards = 1, replicas = 0)
 public class DoubanBook implements Serializable {
 
     public DoubanBook() {
@@ -36,14 +38,14 @@ public class DoubanBook implements Serializable {
     @Id
     private Integer tableId;
     private Integer bookId;
-    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String bookName;
     private Integer typeId;
-    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String author;
-    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String translator;
-    //    @Field(analyzer = "ik_smart", type = FieldType.Text)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String publishingHouse;
     private Date publishTime;
     private BigDecimal price;

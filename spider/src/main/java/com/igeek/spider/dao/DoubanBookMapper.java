@@ -16,4 +16,6 @@ public interface DoubanBookMapper {
     int updateByPrimaryKey(DoubanBook record);
 
     DoubanBook find(DoubanBook build);
+
+    Integer deleteByBookName(String bookName);
 }
