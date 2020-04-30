@@ -3,6 +3,11 @@ package com.igeek.common.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author zhouxu
+ * @email 1419982188@qq.com
+ * @date 2020/04/30
+ */
 public class DateUtil {
 
     public static final String PATTERN_DATE_YYYYMD = "yyyy-M-d";
