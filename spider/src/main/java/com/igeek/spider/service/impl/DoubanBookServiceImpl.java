@@ -85,13 +85,14 @@ public class DoubanBookServiceImpl implements DoubanBookService {
             return 0;
         }
 
-        DoubanBook book = doubanBookMapper.find(DoubanBook.builder()
+        List<DoubanBook> doubanBooks = doubanBookMapper.find(DoubanBook.builder()
                 .bookId(doubanBook.getBookId())
                 .build());
         int result = 0;
-        if (book == null) {
+        if (CollectionUtils.isEmpty(doubanBooks)) {
             result = doubanBookMapper.insertSelective(doubanBook);
         } else {
+            DoubanBook book = doubanBooks.get(0);
             if (!book.equals(doubanBook)) {
                 doubanBook.setTableId(book.getTableId());
                 result = doubanBookMapper.updateByPrimaryKeySelective(doubanBook);

@@ -11,10 +11,17 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author zhouxu
+ * @email 1419982188@qq.com
+ * @date 2020/04/30
+ */
 @Data
 @Builder(toBuilder = true)
 @Document(indexName = "book", type = "_doc", shards = 1, replicas = 0)
 public class DoubanBook implements Serializable {
+
+    private static final long serialVersionUID = -1L;
 
     public DoubanBook() {
     }
@@ -38,14 +45,14 @@ public class DoubanBook implements Serializable {
     @Id
     private Integer tableId;
     private Integer bookId;
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String bookName;
     private Integer typeId;
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String author;
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String translator;
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String publishingHouse;
     private Date publishTime;
     private BigDecimal price;

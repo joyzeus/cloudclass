@@ -2,6 +2,8 @@ package com.igeek.spider.dao;
 
 import com.igeek.spider.model.entity.DoubanBook;
 
+import java.util.List;
+
 public interface DoubanBookMapper {
     int deleteByPrimaryKey(Integer tableId);
 
@@ -15,7 +17,7 @@ public interface DoubanBookMapper {
 
     int updateByPrimaryKey(DoubanBook record);
 
-    DoubanBook find(DoubanBook build);
+    List<DoubanBook> find(DoubanBook build);
 
     Integer deleteByBookName(String bookName);
 }

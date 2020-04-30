@@ -26,7 +26,7 @@
     from douban_book
     where table_id = #{tableId,jdbcType=INTEGER}
   </select>
-    <select id="find" resultType="com.igeek.spider.model.entity.DoubanBook">
+     <select id="find" resultType="com.igeek.spider.model.entity.DoubanBook">
       select <include refid="Base_Column_List"></include>
       from douban_book
       <where>
