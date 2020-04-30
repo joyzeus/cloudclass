@@ -66,3 +66,8 @@ logging:
 token:
   secret: secret
   expiration: 604800
+fdfs:
+  connect-timeout: 2000
+  so-timeout: 3000
+  tracker-list:
+    - 192.168.1.166:22122

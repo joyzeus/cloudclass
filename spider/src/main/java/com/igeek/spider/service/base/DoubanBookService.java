@@ -14,7 +14,7 @@ public interface DoubanBookService {
     /**
      * 新增或者修改图书类型
      *
-     * @param doubanBookType
+     * @param doubanBookType 图书类型信息
      * @return
      */
     Integer insertOrUpdateBookType(DoubanBookType doubanBookType);
@@ -23,15 +23,23 @@ public interface DoubanBookService {
     /**
      * 根据图书类型查询
      *
-     * @param typeName
+     * @param typeName 图书类型名称
      * @return
      */
     DoubanBookType selectByTypeName(String typeName);
 
     /**
+     * 根据图书id获取图书信息
+     *
+     * @param id 图书id
+     * @return
+     */
+    DoubanBook queryById(Integer id);
+
+    /**
      * 新增或者修改图书信息
      *
-     * @param doubanBook
+     * @param doubanBook 图书信息
      * @return
      */
     Integer insertOrUpdateBook(DoubanBook doubanBook);
@@ -39,7 +47,7 @@ public interface DoubanBookService {
     /**
      * 通过主键Id删除图书
      *
-     * @param tableId
+     * @param tableId 图书tableId
      * @return
      */
     Integer deleteByPrimaryKey(Integer tableId);
@@ -55,11 +63,13 @@ public interface DoubanBookService {
     /**
      * 查询图书
      *
-     * @param keyword
-     * @param pageNum
-     * @param pageSize
-     * @param sortAction
+     * @param keyword    关键字
+     * @param pageNum    查询页码
+     * @param pageSize   每页显示数据量
+     * @param sortAction 排序字段
      * @return
      */
     Page<DoubanBook> list(String keyword, Integer pageNum, Integer pageSize, Integer sortAction);
+
+
 }

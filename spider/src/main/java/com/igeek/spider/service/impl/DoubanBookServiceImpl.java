@@ -75,6 +75,11 @@ public class DoubanBookServiceImpl implements DoubanBookService {
     }
 
     @Override
+    public DoubanBook queryById(Integer id) {
+        return doubanBookMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public Integer insertOrUpdateBook(DoubanBook doubanBook) {
         if (doubanBook == null || doubanBook.getBookId() == null) {
             return 0;

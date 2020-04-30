@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * @author zhouxu
  * @date 2019/12/24
+ * @email 1419982188@qq.com
  */
 @SpringBootConfiguration
 @EnableTransactionManagement
