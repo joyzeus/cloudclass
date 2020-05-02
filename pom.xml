@@ -15,6 +15,7 @@
         <module>admin</module>
         <module>user</module>
         <module>crm</module>
+        <module>task</module>
     </modules>
 
     <parent>
