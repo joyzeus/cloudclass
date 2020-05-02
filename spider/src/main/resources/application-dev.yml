@@ -5,7 +5,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://192.168.1.166:3306/book?useUnicode=true&characterEncoding=UTF-8&useSSL=true&&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.0.166:3306/book?useUnicode=true&characterEncoding=UTF-8&useSSL=true&&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -45,7 +45,7 @@ spring:
       repositories:
         enabled: true
       cluster-name: cloudclass
-      cluster-nodes: 192.168.1.166:9300
+      cluster-nodes: 192.168.0.166:9300
   main:
     allow-bean-definition-overriding: true
   mail:
@@ -71,4 +71,4 @@ fdfs:
   connect-timeout: 2000
   so-timeout: 3000
   tracker-list:
-    - 192.168.1.166:22122
+    - 192.168.0.166:22122

@@ -14,7 +14,7 @@
             <property name="addRemarkComments" value="true"/>
         </commentGenerator>
         <jdbcConnection
-                connectionURL="jdbc:mysql://192.168.1.166:3306/crm?useUnicode=true&amp;useSSL=false&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai"
+                connectionURL="jdbc:mysql://192.168.0.166:3306/crm?useUnicode=true&amp;useSSL=false&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai"
                 driverClass="com.mysql.cj.jdbc.Driver" userId="root" password="123456">
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
