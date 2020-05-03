@@ -37,7 +37,7 @@ public class ShadowSkySingInTask {
     @Autowired
     private ShadowskySigninLogMapper shadowskySigninLogMapper;
 
-    @Scheduled(cron = "0 0 0 * * ? ")
+    @Scheduled(cron = "0 15 23 * * ? ")
     public void autoSignIn() {
         log.error(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
         List<ShadowskyAccount> shadowskyAccountList = shadowskyAccountMapper.selectList(null);
