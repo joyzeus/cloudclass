@@ -147,6 +147,17 @@ public class RedisDao {
 
     /*-------------------------------------------------------- list api ------------------------------------------------------------------*/
 
+    public long rightPush(String key, Object value) {
+        return redisTemplate.opsForList().rightPush(key, value);
+    }
+
+    public Object leftPop(String key) {
+        return redisTemplate.opsForList().leftPop(key);
+    }
+
+    public Object bLeftPop(String key) {
+        return redisTemplate.opsForList().leftPop(key, 0, TimeUnit.SECONDS);
+    }
 
 
     /*-------------------------------------------------------- set api ------------------------------------------------------------------*/

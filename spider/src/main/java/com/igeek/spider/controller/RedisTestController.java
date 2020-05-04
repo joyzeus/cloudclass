@@ -4,6 +4,7 @@ import com.igeek.common.util.R;
 import com.igeek.spider.dao.DoubanBookMapper;
 import com.igeek.spider.dao.RedisDao;
 import com.igeek.spider.model.entity.DoubanBook;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import java.util.Set;
  * @email 1419982188@qq.com
  * @date 2020/4/30 10:16
  */
+@Slf4j
 @RestController
 @RequestMapping("/redis")
 public class RedisTestController {
@@ -54,5 +56,44 @@ public class RedisTestController {
     public R syncBooksRank() {
         Set<ZSetOperations.TypedTuple<Object>> typedTupleSet = redisDao.reverseRangeWithScores("sys:books:rank", 0, 9);
         return R.success(typedTupleSet);
+    }
+
+    @GetMapping("/pubMessage")
+    public R pubMessage() {
+        List<DoubanBook> doubanBooks = doubanBookMapper.find(null);
+        doubanBooks.forEach(d -> {
+            redisDao.rightPush("sys:books:list", d);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        return R.ok();
+    }
+
+    @GetMapping("/subMessage")
+    public void subMessage() {
+        while (true) {
+            Object o = redisDao.leftPop("sys:books:list");
+            if (o == null) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                log.error(o.toString());
+            }
+        }
+//        return R.ok();
+    }
+
+    @GetMapping("/subBLPopMessage")
+    public void subBlpopMessage() {
+        while (true) {
+            Object o = redisDao.bLeftPop("sys:books:list");
+            log.error(o.toString());
+        }
     }
 }
