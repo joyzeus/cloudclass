@@ -51,7 +51,7 @@ public class ShadowSkySingInTask {
 
             String result = shadowSkyService.signIn(token);
             ShadowSkySignInResult shadowSkySignInResult = JacksonUtil.parseToObject(result, ShadowSkySignInResult.class);
-            shadowSkySignInResult.setMsg(URLDecoder.decode(shadowSkySignInResult.getMsg(), StandardCharsets.UTF_8));
+//            shadowSkySignInResult.setMsg(URLDecoder.decode(shadowSkySignInResult.getMsg(), StandardCharsets.UTF_8));
             ShadowskySigninLog shadowskySigninLog = ShadowskySigninLog.builder()
                     .account(shadowskyAccount.getAccount())
                     .createTime(new Date())

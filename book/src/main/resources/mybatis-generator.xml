@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="MYSQL" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!--去除注释-->
+            <property name="suppressAllComments" value="true"/>
+            <!--注释中去除日期注释-->
+            <property name="suppressDate" value="true"/>
+            <!--注释中添加数据库字段备注注释-->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://localhost:3306/douban?useUnicode=true&amp;useSSL=false&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai"
+                driverClass="com.mysql.cj.jdbc.Driver" userId="root" password="123456zx.">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.igeek.book.model.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper/douban" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.igeek.book.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="douban" tableName="douban_book" domainObjectName="DoubanBook" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="douban" tableName="douban_book_type" domainObjectName="DoubanBookType" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="douban" tableName="douban_movie" domainObjectName="DoubanMovie" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="douban" tableName="douban_movie_comments" domainObjectName="DoubanMovieComments" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>

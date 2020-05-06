@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeek.book.dao.DoubanBookMapper">
+  <resultMap id="BaseResultMap" type="com.igeek.book.model.entity.DoubanBook">
+    <id column="table_id" jdbcType="INTEGER" property="tableId" />
+    <result column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="translator" jdbcType="VARCHAR" property="translator" />
+    <result column="publishing_house" jdbcType="VARCHAR" property="publishingHouse" />
+    <result column="publish_time" jdbcType="DATE" property="publishTime" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="score" jdbcType="DECIMAL" property="score" />
+    <result column="rate_count" jdbcType="INTEGER" property="rateCount" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    table_id, book_id, book_name, type_id, author, translator, publishing_house, publish_time, 
+    price, score, rate_count, link, img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from douban_book
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </select>
+     <select id="find" resultType="com.igeek.book.model.entity.DoubanBook">
+      select <include refid="Base_Column_List"></include>
+      from douban_book
+      <where>
+        <if test="tableId != null">
+          and table_id = #{tableId,jdbcType=INTEGER}
+        </if>
+        <if test="bookId != null">
+          and book_id = #{bookId,jdbcType=INTEGER}
+        </if>
+        <if test="bookName != null">
+          and book_name = #{bookName,jdbcType=VARCHAR}
+        </if>
+        <if test="typeId != null">
+          and type_id = #{typeId,jdbcType=INTEGER}
+        </if>
+        <if test="author != null">
+          and author = #{author,jdbcType=VARCHAR}
+        </if>
+        <if test="translator != null">
+          and translator = #{translator,jdbcType=VARCHAR}
+        </if>
+        <if test="publishingHouse != null">
+          and publishing_house = #{publishingHouse,jdbcType=VARCHAR}
+        </if>
+        <if test="publishTime != null">
+          and publish_time = #{publishTime,jdbcType=DATE}
+        </if>
+        <if test="price != null">
+          and price = #{price,jdbcType=DECIMAL}
+        </if>
+        <if test="score != null">
+          and score = #{score,jdbcType=DECIMAL}
+        </if>
+        <if test="rateCount != null">
+          and rate_count = #{rateCount,jdbcType=INTEGER}
+        </if>
+        <if test="link != null">
+          and link = #{link,jdbcType=VARCHAR}
+        </if>
+        <if test="img != null">
+          and img = #{img,jdbcType=VARCHAR}
+        </if>
+      </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from douban_book
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByBookName">
+    delete from douban_book
+    where book_name = #{bookName}
+  </delete>
+  <insert id="insert" parameterType="com.igeek.book.model.entity.DoubanBook">
+    insert into douban_book (table_id, book_id, book_name, 
+      type_id, author, translator, 
+      publishing_house, publish_time, price, 
+      score, rate_count, link, 
+      img)
+    values (#{tableId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, 
+      #{typeId,jdbcType=INTEGER}, #{author,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, 
+      #{publishingHouse,jdbcType=VARCHAR}, #{publishTime,jdbcType=DATE}, #{price,jdbcType=DECIMAL}, 
+      #{score,jdbcType=DECIMAL}, #{rateCount,jdbcType=INTEGER}, #{link,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.book.model.entity.DoubanBook"
+          useGeneratedKeys="true" keyProperty="tableId">
+    insert into douban_book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        table_id,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="translator != null">
+        translator,
+      </if>
+      <if test="publishingHouse != null">
+        publishing_house,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="rateCount != null">
+        rate_count,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        #{translator,jdbcType=VARCHAR},
+      </if>
+      <if test="publishingHouse != null">
+        #{publishingHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=DATE},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="rateCount != null">
+        #{rateCount,jdbcType=INTEGER},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.book.model.entity.DoubanBook">
+    update douban_book
+    <set>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        translator = #{translator,jdbcType=VARCHAR},
+      </if>
+      <if test="publishingHouse != null">
+        publishing_house = #{publishingHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=DATE},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="rateCount != null">
+        rate_count = #{rateCount,jdbcType=INTEGER},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.book.model.entity.DoubanBook">
+    update douban_book
+    set book_id = #{bookId,jdbcType=INTEGER},
+      book_name = #{bookName,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      author = #{author,jdbcType=VARCHAR},
+      translator = #{translator,jdbcType=VARCHAR},
+      publishing_house = #{publishingHouse,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=DATE},
+      price = #{price,jdbcType=DECIMAL},
+      score = #{score,jdbcType=DECIMAL},
+      rate_count = #{rateCount,jdbcType=INTEGER},
+      link = #{link,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR}
+    where table_id = #{tableId,jdbcType=INTEGER}
+  </update>
+</mapper>
