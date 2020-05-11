@@ -11,7 +11,7 @@
 
     <modules>
         <module>common</module>
-        <module>spider</module>
+        <module>book</module>
         <module>admin</module>
         <module>user</module>
         <module>crm</module>
