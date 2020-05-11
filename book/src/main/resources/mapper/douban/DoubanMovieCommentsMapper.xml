@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.igeek.spider.dao.DoubanMovieCommentsMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.spider.model.entity.DoubanMovieComments">
+<mapper namespace="com.igeek.book.dao.DoubanMovieCommentsMapper">
+  <resultMap id="BaseResultMap" type="com.igeek.book.model.entity.DoubanMovieComments">
     <id column="comment_id" jdbcType="INTEGER" property="commentId" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.spider.model.entity.DoubanMovieComments">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.book.model.entity.DoubanMovieComments">
     <result column="comment_info" jdbcType="LONGVARCHAR" property="commentInfo" />
     <result column="comment_author" jdbcType="LONGVARCHAR" property="commentAuthor" />
     <result column="commenter_img_url" jdbcType="LONGVARCHAR" property="commenterImgUrl" />
@@ -30,7 +30,7 @@
     delete from douban_movie_comments
     where comment_id = #{commentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.spider.model.entity.DoubanMovieComments">
+  <insert id="insert" parameterType="com.igeek.book.model.entity.DoubanMovieComments">
     insert into douban_movie_comments (comment_id, comment_info, comment_author, 
       commenter_img_url, comment-vote, comment_movie, 
       record_id)
@@ -38,7 +38,7 @@
       #{commenterImgUrl,jdbcType=LONGVARCHAR}, #{commentVote,jdbcType=LONGVARCHAR}, #{commentMovie,jdbcType=LONGVARCHAR}, 
       #{recordId,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.spider.model.entity.DoubanMovieComments">
+  <insert id="insertSelective" parameterType="com.igeek.book.model.entity.DoubanMovieComments">
     insert into douban_movie_comments
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="commentId != null">
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.spider.model.entity.DoubanMovieComments">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.book.model.entity.DoubanMovieComments">
     update douban_movie_comments
     <set>
       <if test="commentInfo != null">
@@ -111,7 +111,7 @@
     </set>
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.igeek.spider.model.entity.DoubanMovieComments">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.igeek.book.model.entity.DoubanMovieComments">
     update douban_movie_comments
     set comment_info = #{commentInfo,jdbcType=LONGVARCHAR},
       comment_author = #{commentAuthor,jdbcType=LONGVARCHAR},

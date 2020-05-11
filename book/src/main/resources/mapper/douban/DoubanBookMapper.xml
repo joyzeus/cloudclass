@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.igeek.spider.dao.DoubanBookMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.spider.model.entity.DoubanBook">
+<mapper namespace="com.igeek.book.dao.DoubanBookMapper">
+  <resultMap id="BaseResultMap" type="com.igeek.book.model.entity.DoubanBook">
     <id column="table_id" jdbcType="INTEGER" property="tableId" />
     <result column="book_id" jdbcType="INTEGER" property="bookId" />
     <result column="book_name" jdbcType="VARCHAR" property="bookName" />
@@ -26,7 +26,7 @@
     from douban_book
     where table_id = #{tableId,jdbcType=INTEGER}
   </select>
-     <select id="find" resultType="com.igeek.spider.model.entity.DoubanBook">
+     <select id="find" resultType="com.igeek.book.model.entity.DoubanBook">
       select <include refid="Base_Column_List"></include>
       from douban_book
       <where>
@@ -79,7 +79,7 @@
     delete from douban_book
     where book_name = #{bookName}
   </delete>
-  <insert id="insert" parameterType="com.igeek.spider.model.entity.DoubanBook">
+  <insert id="insert" parameterType="com.igeek.book.model.entity.DoubanBook">
     insert into douban_book (table_id, book_id, book_name, 
       type_id, author, translator, 
       publishing_house, publish_time, price, 
@@ -91,7 +91,7 @@
       #{score,jdbcType=DECIMAL}, #{rateCount,jdbcType=INTEGER}, #{link,jdbcType=VARCHAR}, 
       #{img,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.spider.model.entity.DoubanBook"
+  <insert id="insertSelective" parameterType="com.igeek.book.model.entity.DoubanBook"
           useGeneratedKeys="true" keyProperty="tableId">
     insert into douban_book
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -177,7 +177,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.spider.model.entity.DoubanBook">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.book.model.entity.DoubanBook">
     update douban_book
     <set>
       <if test="bookId != null">
@@ -219,7 +219,7 @@
     </set>
     where table_id = #{tableId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.spider.model.entity.DoubanBook">
+  <update id="updateByPrimaryKey" parameterType="com.igeek.book.model.entity.DoubanBook">
     update douban_book
     set book_id = #{bookId,jdbcType=INTEGER},
       book_name = #{bookName,jdbcType=VARCHAR},

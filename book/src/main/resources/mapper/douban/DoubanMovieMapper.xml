@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.igeek.spider.dao.DoubanMovieMapper">
-  <resultMap id="BaseResultMap" type="com.igeek.spider.model.entity.DoubanMovie">
+<mapper namespace="com.igeek.book.dao.DoubanMovieMapper">
+  <resultMap id="BaseResultMap" type="com.igeek.book.model.entity.DoubanMovie">
     <id column="movie_id" jdbcType="INTEGER" property="movieId" />
     <result column="director" jdbcType="VARCHAR" property="director" />
     <result column="scenarist" jdbcType="VARCHAR" property="scenarist" />
@@ -14,7 +14,7 @@
     <result column="rating_num" jdbcType="VARCHAR" property="ratingNum" />
     <result column="tags" jdbcType="VARCHAR" property="tags" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.spider.model.entity.DoubanMovie">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.book.model.entity.DoubanMovie">
     <result column="name" jdbcType="LONGVARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -36,7 +36,7 @@
     delete from douban_movie
     where movie_id = #{movieId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.igeek.spider.model.entity.DoubanMovie">
+  <insert id="insert" parameterType="com.igeek.book.model.entity.DoubanMovie">
     insert into douban_movie (movie_id, director, scenarist, 
       actors, type, country, 
       language, release_date, duration, 
@@ -48,7 +48,7 @@
       #{ratingNum,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, #{name,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.igeek.spider.model.entity.DoubanMovie">
+  <insert id="insertSelective" parameterType="com.igeek.book.model.entity.DoubanMovie">
     insert into douban_movie
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="movieId != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.spider.model.entity.DoubanMovie">
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.book.model.entity.DoubanMovie">
     update douban_movie
     <set>
       <if test="director != null">
@@ -166,7 +166,7 @@
     </set>
     where movie_id = #{movieId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.igeek.spider.model.entity.DoubanMovie">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.igeek.book.model.entity.DoubanMovie">
     update douban_movie
     set director = #{director,jdbcType=VARCHAR},
       scenarist = #{scenarist,jdbcType=VARCHAR},
@@ -181,7 +181,7 @@
       name = #{name,jdbcType=LONGVARCHAR}
     where movie_id = #{movieId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.igeek.spider.model.entity.DoubanMovie">
+  <update id="updateByPrimaryKey" parameterType="com.igeek.book.model.entity.DoubanMovie">
     update douban_movie
     set director = #{director,jdbcType=VARCHAR},
       scenarist = #{scenarist,jdbcType=VARCHAR},
