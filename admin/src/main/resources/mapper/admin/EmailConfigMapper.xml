@@ -8,12 +8,12 @@
     <result column="account_type" jdbcType="VARCHAR" property="accountType" />
     <result column="email_type" jdbcType="INTEGER" property="emailType" />
     <result column="enable" jdbcType="BIT" property="enable" />
-    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
   </resultMap>
   <sql id="Base_Column_List">
-    table_id, user_id, account, account_type, email_type, enable, creat_time, update_time, 
+    table_id, user_id, account, account_type, email_type, enable, create_time, update_time, 
     update_user_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -29,11 +29,11 @@
   <insert id="insert" parameterType="com.igeek.admin.model.entity.EmailConfig">
     insert into email_config (table_id, user_id, account, 
       account_type, email_type, enable, 
-      creat_time, update_time, update_user_id
+      create_time, update_time, update_user_id
       )
     values (#{tableId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, 
       #{accountType,jdbcType=VARCHAR}, #{emailType,jdbcType=INTEGER}, #{enable,jdbcType=BIT}, 
-      #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.EmailConfig">
@@ -57,8 +57,8 @@
       <if test="enable != null">
         enable,
       </if>
-      <if test="creatTime != null">
-        creat_time,
+      <if test="createTime != null">
+        create_time,
       </if>
       <if test="updateTime != null">
         update_time,
@@ -86,8 +86,8 @@
       <if test="enable != null">
         #{enable,jdbcType=BIT},
       </if>
-      <if test="creatTime != null">
-        #{creatTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
@@ -115,8 +115,8 @@
       <if test="enable != null">
         enable = #{enable,jdbcType=BIT},
       </if>
-      <if test="creatTime != null">
-        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -134,7 +134,7 @@
       account_type = #{accountType,jdbcType=VARCHAR},
       email_type = #{emailType,jdbcType=INTEGER},
       enable = #{enable,jdbcType=BIT},
-      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_user_id = #{updateUserId,jdbcType=INTEGER}
     where table_id = #{tableId,jdbcType=INTEGER}
@@ -159,8 +159,8 @@
       <if test="enable != null">
         and enable = #{enable,jdbcType=BIT}
       </if>
-      <if test="creatTime != null">
-        and creat_time = #{creatTime,jdbcType=TIMESTAMP}
+      <if test="createTime != null">
+        and create_time = #{createTime,jdbcType=TIMESTAMP}
       </if>
       <if test="updateTime != null">
         and update_time = #{updateTime,jdbcType=TIMESTAMP}

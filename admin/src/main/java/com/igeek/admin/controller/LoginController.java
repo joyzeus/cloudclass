@@ -2,7 +2,7 @@ package com.igeek.admin.controller;
 
 import com.igeek.admin.model.entity.LoginLog;
 import com.igeek.admin.model.entity.Users;
-import com.igeek.admin.model.entity.bo.UserLoginBO;
+import com.igeek.admin.model.param.UserLoginBO;
 import com.igeek.admin.model.vo.UsersVo;
 import com.igeek.admin.service.base.SysLogService;
 import com.igeek.admin.service.base.UserTokenService;
@@ -31,7 +31,7 @@ import java.util.Date;
  * @email 1419982188@qq.com
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/admin")
 public class LoginController extends BaseContorller {
 
     private final UsersService userService;

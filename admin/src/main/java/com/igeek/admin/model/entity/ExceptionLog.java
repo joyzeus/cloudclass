@@ -17,21 +17,21 @@ public class ExceptionLog implements Serializable {
 
     private String ip;
 
-    private Integer createUserid;
+    private Integer createUserId;
 
-    private Date addtime;
+    private Date createTime;
 
     private Byte view;
 
     private Date viewTime;
 
-    private Integer viewUserid;
+    private Integer viewUserId;
 
     private Boolean resolve;
 
     private Date resolveTime;
 
-    private Integer resolveUserid;
+    private Integer resolveUserId;
 
     private String exceptionMsg;
 }

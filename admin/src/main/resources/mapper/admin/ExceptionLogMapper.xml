@@ -7,21 +7,21 @@
     <result column="method_name" jdbcType="VARCHAR" property="methodName" />
     <result column="exception_type" jdbcType="VARCHAR" property="exceptionType" />
     <result column="ip" jdbcType="VARCHAR" property="ip" />
-    <result column="create_userid" jdbcType="INTEGER" property="createUserid" />
-    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="view" jdbcType="TINYINT" property="view" />
     <result column="view_time" jdbcType="TIMESTAMP" property="viewTime" />
-    <result column="view_userid" jdbcType="INTEGER" property="viewUserid" />
+    <result column="view_user_id" jdbcType="INTEGER" property="viewUserId" />
     <result column="resolve" jdbcType="BIT" property="resolve" />
     <result column="resolve_time" jdbcType="TIMESTAMP" property="resolveTime" />
-    <result column="resolve_userid" jdbcType="INTEGER" property="resolveUserid" />
+    <result column="resolve_user_id" jdbcType="INTEGER" property="resolveUserId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.igeek.admin.model.entity.ExceptionLog">
     <result column="exception_msg" jdbcType="LONGVARCHAR" property="exceptionMsg" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, class_name, method_name, exception_type, ip, create_userid, addtime, view, view_time, 
-    view_userid, resolve, resolve_time, resolve_userid
+    id, class_name, method_name, exception_type, ip, create_user_id, create_time, view, view_time,
+    view_user_id, resolve, resolve_time, resolve_user_id
   </sql>
   <sql id="Blob_Column_List">
     exception_msg
@@ -41,15 +41,15 @@
   </delete>
   <insert id="insert" parameterType="com.igeek.admin.model.entity.ExceptionLog">
     insert into exception_log (id, class_name, method_name, 
-      exception_type, ip, create_userid, 
-      addtime, view, view_time, 
-      view_userid, resolve, resolve_time, 
-      resolve_userid, exception_msg)
+      exception_type, ip, create_user_id,
+      create_time, view, view_time,
+      view_user_id, resolve, resolve_time,
+      resolve_user_id, exception_msg)
     values (#{id,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, 
-      #{exceptionType,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createUserid,jdbcType=INTEGER}, 
-      #{addtime,jdbcType=TIMESTAMP}, #{view,jdbcType=TINYINT}, #{viewTime,jdbcType=TIMESTAMP}, 
-      #{viewUserid,jdbcType=INTEGER}, #{resolve,jdbcType=BIT}, #{resolveTime,jdbcType=TIMESTAMP}, 
-      #{resolveUserid,jdbcType=INTEGER}, #{exceptionMsg,jdbcType=LONGVARCHAR})
+      #{exceptionType,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{view,jdbcType=TINYINT}, #{viewTime,jdbcType=TIMESTAMP},
+      #{viewUserId,jdbcType=INTEGER}, #{resolve,jdbcType=BIT}, #{resolveTime,jdbcType=TIMESTAMP}, 
+      #{resolveUserId,jdbcType=INTEGER}, #{exceptionMsg,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.igeek.admin.model.entity.ExceptionLog">
     insert into exception_log
@@ -69,11 +69,11 @@
       <if test="ip != null">
         ip,
       </if>
-      <if test="createUserid != null">
-        create_userid,
+      <if test="createUserId != null">
+        create_user_id,
       </if>
-      <if test="addtime != null">
-        addtime,
+      <if test="createTime != null">
+        create_time,
       </if>
       <if test="view != null">
         view,
@@ -81,8 +81,8 @@
       <if test="viewTime != null">
         view_time,
       </if>
-      <if test="viewUserid != null">
-        view_userid,
+      <if test="viewUserId != null">
+        view_user_id,
       </if>
       <if test="resolve != null">
         resolve,
@@ -90,8 +90,8 @@
       <if test="resolveTime != null">
         resolve_time,
       </if>
-      <if test="resolveUserid != null">
-        resolve_userid,
+      <if test="resolveUserId != null">
+        resolve_user_id,
       </if>
       <if test="exceptionMsg != null">
         exception_msg,
@@ -113,11 +113,11 @@
       <if test="ip != null">
         #{ip,jdbcType=VARCHAR},
       </if>
-      <if test="createUserid != null">
-        #{createUserid,jdbcType=INTEGER},
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
       </if>
-      <if test="addtime != null">
-        #{addtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="view != null">
         #{view,jdbcType=TINYINT},
@@ -125,8 +125,8 @@
       <if test="viewTime != null">
         #{viewTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="viewUserid != null">
-        #{viewUserid,jdbcType=INTEGER},
+      <if test="viewUserId != null">
+        #{viewUserId,jdbcType=INTEGER},
       </if>
       <if test="resolve != null">
         #{resolve,jdbcType=BIT},
@@ -134,8 +134,8 @@
       <if test="resolveTime != null">
         #{resolveTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="resolveUserid != null">
-        #{resolveUserid,jdbcType=INTEGER},
+      <if test="resolveUserId != null">
+        #{resolveUserId,jdbcType=INTEGER},
       </if>
       <if test="exceptionMsg != null">
         #{exceptionMsg,jdbcType=LONGVARCHAR},
@@ -157,11 +157,11 @@
       <if test="ip != null">
         ip = #{ip,jdbcType=VARCHAR},
       </if>
-      <if test="createUserid != null">
-        create_userid = #{createUserid,jdbcType=INTEGER},
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=INTEGER},
       </if>
-      <if test="addtime != null">
-        addtime = #{addtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="view != null">
         view = #{view,jdbcType=TINYINT},
@@ -169,8 +169,8 @@
       <if test="viewTime != null">
         view_time = #{viewTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="viewUserid != null">
-        view_userid = #{viewUserid,jdbcType=INTEGER},
+      <if test="viewUserId != null">
+        view_user_id = #{viewUserId,jdbcType=INTEGER},
       </if>
       <if test="resolve != null">
         resolve = #{resolve,jdbcType=BIT},
@@ -178,8 +178,8 @@
       <if test="resolveTime != null">
         resolve_time = #{resolveTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="resolveUserid != null">
-        resolve_userid = #{resolveUserid,jdbcType=INTEGER},
+      <if test="resolveUserId != null">
+        resolve_user_id = #{resolveUserId,jdbcType=INTEGER},
       </if>
       <if test="exceptionMsg != null">
         exception_msg = #{exceptionMsg,jdbcType=LONGVARCHAR},
@@ -193,14 +193,14 @@
       method_name = #{methodName,jdbcType=VARCHAR},
       exception_type = #{exceptionType,jdbcType=VARCHAR},
       ip = #{ip,jdbcType=VARCHAR},
-      create_userid = #{createUserid,jdbcType=INTEGER},
-      addtime = #{addtime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       view = #{view,jdbcType=TINYINT},
       view_time = #{viewTime,jdbcType=TIMESTAMP},
-      view_userid = #{viewUserid,jdbcType=INTEGER},
+      view_user_id = #{viewUserId,jdbcType=INTEGER},
       resolve = #{resolve,jdbcType=BIT},
       resolve_time = #{resolveTime,jdbcType=TIMESTAMP},
-      resolve_userid = #{resolveUserid,jdbcType=INTEGER},
+      resolve_user_id = #{resolveUserId,jdbcType=INTEGER},
       exception_msg = #{exceptionMsg,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -210,14 +210,14 @@
       method_name = #{methodName,jdbcType=VARCHAR},
       exception_type = #{exceptionType,jdbcType=VARCHAR},
       ip = #{ip,jdbcType=VARCHAR},
-      create_userid = #{createUserid,jdbcType=INTEGER},
-      addtime = #{addtime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       view = #{view,jdbcType=TINYINT},
       view_time = #{viewTime,jdbcType=TIMESTAMP},
-      view_userid = #{viewUserid,jdbcType=INTEGER},
+      view_user_id = #{viewUserId,jdbcType=INTEGER},
       resolve = #{resolve,jdbcType=BIT},
       resolve_time = #{resolveTime,jdbcType=TIMESTAMP},
-      resolve_userid = #{resolveUserid,jdbcType=INTEGER}
+      resolve_user_id = #{resolveUserId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getList" resultType="com.igeek.admin.model.entity.ExceptionLog">
