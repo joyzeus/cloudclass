@@ -29,7 +29,7 @@ spring:
     testOnReturn: false
     filters: stat, wall
   redis:
-    host: 127.0.0.1
+    host: 192.168.0.166
     port: 6379
     password:    # 密码（默认为空）L
     timeout: 6000ms  # 连接超时时长（毫秒）
