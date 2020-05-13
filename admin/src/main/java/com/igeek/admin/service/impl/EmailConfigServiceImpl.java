@@ -58,9 +58,9 @@ public class EmailConfigServiceImpl implements EmailConfigService {
         if (redisUtil.has(key)) {
             return redisUtil.get(key, EmailConfig.class);
         } else {
-            List<EmailConfig> emailConfigList = emailConfigMapper.list(EmailConfig.Builder.anEmailConfig()
-                    .withEmailType(1)
-                    .withEnable(true)
+            List<EmailConfig> emailConfigList = emailConfigMapper.list(EmailConfig.builder()
+                    .emailType(1)
+                    .enable(true)
                     .build());
             EmailConfig emailConfig = null;
             if (emailConfigList != null && emailConfigList.size() > 0) {
@@ -77,9 +77,9 @@ public class EmailConfigServiceImpl implements EmailConfigService {
         if (redisUtil.has(key)) {
             return redisUtil.getList(key, EmailConfig.class);
         } else {
-            List<EmailConfig> emailConfigList = emailConfigMapper.list(EmailConfig.Builder.anEmailConfig()
-                    .withEmailType(2)
-                    .withEnable(true)
+            List<EmailConfig> emailConfigList = emailConfigMapper.list(EmailConfig.builder()
+                    .emailType(2)
+                    .enable(true)
                     .build());
             if (emailConfigList != null && emailConfigList.size() > 0) {
                 redisUtil.set(key, emailConfigList);

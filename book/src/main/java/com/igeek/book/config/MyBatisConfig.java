@@ -11,6 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootConfiguration
 @EnableTransactionManagement
-@MapperScan("com.igeek.*.dao")
+@MapperScan("com.igeek.book.dao")
 public class MyBatisConfig {
 }

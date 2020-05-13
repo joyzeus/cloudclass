@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-    <property name="LOGS" value="/logs/spider" />
+    <property name="LOGS" value="/logs/book" />
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">

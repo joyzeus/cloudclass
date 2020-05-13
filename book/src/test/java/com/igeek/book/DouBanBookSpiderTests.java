@@ -10,7 +10,7 @@ import us.codecraft.webmagic.Spider;
  * @email 1419982188@qq.com
  * @date 2020/4/9 10:36
  */
-public class DouBanBookSpiderTests extends SpiderApplicationTests{
+public class DouBanBookSpiderTests extends BookApplicationTests{
 
     @Autowired
     DoubanBookSpider doubanBookSpider;

@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swagger2Configuration {
 
-    public static final String SWAGGER_SCAN_BASE_PACKAGE = "com.igeek.spider";
+    public static final String SWAGGER_SCAN_BASE_PACKAGE = "com.igeek.book";
 
     public static final String VERSION = "1.0.0";
 

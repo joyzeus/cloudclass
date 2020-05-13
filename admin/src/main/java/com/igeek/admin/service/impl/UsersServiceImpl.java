@@ -2,11 +2,8 @@ package com.igeek.admin.service.impl;
 
 import com.igeek.admin.dao.UsersMapper;
 import com.igeek.admin.model.entity.Users;
-import com.igeek.admin.model.entity.UsersDetailEntity;
 import com.igeek.admin.service.base.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,11 +51,5 @@ public class UsersServiceImpl implements UsersService {
         Users build = Users.builder().build();
         build.setId(userId);
         return usersMapper.find(build);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
-        Users users = usersMapper.findUsers(account);
-        return new UsersDetailEntity();
     }
 }

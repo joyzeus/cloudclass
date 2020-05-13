@@ -1,14 +1,13 @@
 package com.igeek.admin.service.base;
 
 import com.igeek.admin.model.entity.Users;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * @author zhouxu
  * @date 2020/04/10
  * @email 1419982188@qq.com
  */
-public interface UsersService extends UserDetailsService {
+public interface UsersService {
     /**
      * 查询账户
      *

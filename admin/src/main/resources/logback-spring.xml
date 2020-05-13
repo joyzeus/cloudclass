@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-    <property name="LOGS" value="/Users/jay/Desktop/logs/" />
+    <property name="LOGS" value="/home/jay/Desktop/logs/" />
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">

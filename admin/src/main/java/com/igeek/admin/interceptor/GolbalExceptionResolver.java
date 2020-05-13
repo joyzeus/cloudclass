@@ -62,7 +62,7 @@ public class GolbalExceptionResolver implements HandlerExceptionResolver {
             log.setExceptionType(ex.getClass().getSimpleName());
             log.setExceptionMsg(sw.toString());
             log.setView((byte) 0);
-            log.setAddtime(new Date());
+            log.setCreateTime(new Date());
             exceptionLogService.insertSelective(log);
 
             String subject = "【系统异常通知】";
