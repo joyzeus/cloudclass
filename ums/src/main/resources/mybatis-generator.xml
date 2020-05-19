@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="MYSQL" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!--去除注释-->
+            <property name="suppressAllComments" value="true"/>
+            <!--注释中去除日期注释-->
+            <property name="suppressDate" value="true"/>
+            <!--注释中添加数据库字段备注注释-->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:mysql://192.168.0.166:3306/ums?useUnicode=true&amp;useSSL=false&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai"
+                driverClass="com.mysql.cj.jdbc.Driver" userId="root" password="123456">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.igeek.cloudclass.ums.model.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.igeek.cloudclass.ums.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="ums" tableName="ums_admin" domainObjectName="UmsAdmin" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_admin_permission_relation" domainObjectName="UmsAdminPermissionRelation" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_admin_role_relation" domainObjectName="UmsAdminRoleRelation" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_menu" domainObjectName="UmsMenu" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_permission" domainObjectName="UmsPermission" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_resource" domainObjectName="UmsResource" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_resource_category" domainObjectName="UmsResourceCategory" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_role" domainObjectName="UmsRole" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_role_menu_relation" domainObjectName="UmsRoleMenuRelation" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_role_permission_relation" domainObjectName="UmsRolePermissionRelation" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="ums_role_resource_relation" domainObjectName="UmsRoleResourceRelation" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table schema="ums" tableName="user_permission" domainObjectName="UserPermission" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
