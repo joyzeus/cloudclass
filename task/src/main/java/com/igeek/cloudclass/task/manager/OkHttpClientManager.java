@@ -43,6 +43,7 @@ public class OkHttpClientManager {
                             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                             .callTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
+                            .addInterceptor(interceptor)
                             .build();
                 }
             }

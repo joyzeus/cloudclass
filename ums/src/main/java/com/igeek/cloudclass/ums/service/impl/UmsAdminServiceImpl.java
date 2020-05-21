@@ -2,6 +2,8 @@ package com.igeek.cloudclass.ums.service.impl;
 
 import com.igeek.cloudclass.ums.mapper.UmsAdminMapper;
 import com.igeek.cloudclass.ums.service.UmsAdminService;
+import com.igeek.common.exception.BussinessException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,6 +25,15 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public String login(String username, String password) {
+        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
+            throw new BussinessException("登录账号或者密码为空");
+        }
+
+        UserDetails userDetails = loadUserByUsername(username);
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            throw new BussinessException("登录账号或者密码错误");
+        }
+
 
 
         return null;
@@ -30,6 +41,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         return null;
     }
 }

@@ -37,7 +37,7 @@ public class ShadowSkySingInTask {
     @Autowired
     private ShadowskySigninLogMapper shadowskySigninLogMapper;
 
-    @Scheduled(cron = "0 15 23 * * ? ")
+    @Scheduled(cron = "0 0 10 * * ? ")
     public void autoSignIn() throws Exception{
         log.error(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
         List<ShadowskyAccount> shadowskyAccountList = shadowskyAccountMapper.selectList(null);
@@ -51,7 +51,6 @@ public class ShadowSkySingInTask {
 
             String result = shadowSkyService.signIn(token);
             ShadowSkySignInResult shadowSkySignInResult = JacksonUtil.parseToObject(result, ShadowSkySignInResult.class);
-//            shadowSkySignInResult.setMsg(URLDecoder.decode(shadowSkySignInResult.getMsg(), StandardCharsets.UTF_8));
             ShadowskySigninLog shadowskySigninLog = ShadowskySigninLog.builder()
                     .account(shadowskyAccount.getAccount())
                     .createTime(new Date())
