@@ -10,7 +10,6 @@ mybatis:
     cache-enabled: false
     call-setters-on-nulls: true
 
-
 logging:
   config: classpath:logback-spring.xml
   level:
